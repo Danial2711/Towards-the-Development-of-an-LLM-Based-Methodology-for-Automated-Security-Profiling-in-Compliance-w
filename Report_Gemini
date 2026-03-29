@@ -1,0 +1,1294 @@
+1.	Control identifier: AC-2
+2.	Control name: Управління обліковими записами
+3.	Included in baseline profile: Yes.
+4.	Minimum baseline profile parameters: h.1, h.2, h.3: 24 hours; j: quarterly; d: 90 days; end of user day.
+5.	Relevance to this ICS: High; controls access to "confidential" data.
+6.	Security requirements addressed: Account creation, modification, and disabling.
+7.	Risks mitigated: Unauthorized access via stale or unapproved accounts.
+8.	Draft decision: Refine parameters.
+9.	Proposed parameters for the Target Security Profile: 24h limit for actions; 90-day inactivity lockout.
+10.	Proposed enhancements: Enforce via "Loza-1" v.2.0.
+11.	Possible compensating control: None.
+12.	Rationale for the decision: Aligns baseline with existing access control software.
+13.	Responsible role: System Administrator.
+14.	Possible implementation evidence / verification artifact: "Loza-1" configuration logs.
+15.	Information to be clarified with the system owner: Confirmation of current account deactivation SLA.
+16.	Control identifier: AC-3
+17.	Control name: Забезпечення доступу
+18.	Included in baseline profile: Yes.
+19.	Minimum baseline profile parameters: Not specified.
+20.	Relevance to this ICS: High; separates logical access to official info.
+21.	Security requirements addressed: Application of approved authorizations.
+22.	Risks mitigated: Privilege escalation.
+23.	Draft decision: Keep unchanged.
+24.	Proposed parameters for the Target Security Profile: Implement RBAC based on system roles.
+25.	Proposed enhancements: None.
+26.	Possible compensating control: None.
+27.	Rationale for the decision: Baseline is sufficient and supported by "Loza-1".
+28.	Responsible role: Head of SZI.
+29.	Possible implementation evidence / verification artifact: Access control matrix.
+30.	Information to be clarified with the system owner: Keep unchanged.
+31.	Control identifier: AC-4
+32.	Control name: Управління інформаційними потоками
+33.	Included in baseline profile: Yes.
+34.	Minimum baseline profile parameters: Not specified.
+35.	Relevance to this ICS: High; manages data flow between the server and workstations.
+36.	Security requirements addressed: Regulating flow of official information.
+37.	Risks mitigated: Data leakage to unauthorized segments.
+38.	Draft decision: Refine parameters.
+39.	Proposed parameters for the Target Security Profile: Restrict traffic to IT-Tour ports via FortiGate 60F.
+40.	Proposed enhancements: None.
+41.	Possible compensating control: None.
+42.	Rationale for the decision: The FortiGate firewall must be explicitly configured to manage these flows.
+43.	Responsible role: System Administrator.
+44.	Possible implementation evidence / verification artifact: FortiGate routing and policy rules.
+45.	Information to be clarified with the system owner: Exact external connectivity required by IT-Tour software.
+46.	Control identifier: AC-5
+47.	Control name: Розмежування обов'язків
+48.	Included in baseline profile: Yes.
+49.	Minimum baseline profile parameters: Not specified.
+50.	Relevance to this ICS: High; separates IT admin from Security roles.
+51.	Security requirements addressed: Preventing a single user from controlling all security aspects.
+52.	Risks mitigated: Insider threat, unauthorized configuration changes.
+53.	Draft decision: Keep unchanged.
+54.	Proposed parameters for the Target Security Profile: Strict separation between System Administrator and SZI Lead Specialist.
+55.	Proposed enhancements: None.
+56.	Possible compensating control: None.
+57.	Rationale for the decision: Roles are already formally separated by organizational orders.
+58.	Responsible role: General Director.
+59.	Possible implementation evidence / verification artifact: Job descriptions and appointment orders.
+60.	Information to be clarified with the system owner: Keep unchanged.
+61.	Control identifier: AC-6, AC-6(1), AC-6(2), AC-6(5), AC-6(9), AC-6(10)
+62.	Control name: Мінімізація повноважень (including privileged/non-privileged access)
+63.	Included in baseline profile: Yes.
+64.	Minimum baseline profile parameters: Privileged functions limited.
+65.	Relevance to this ICS: High; limits access to Windows 10 Pro and IT-Tour functions.
+66.	Security requirements addressed: Least privilege principle implementation.
+67.	Risks mitigated: Accidental or malicious system alteration by regular users.
+68.	Draft decision: Refine parameters.
+69.	Proposed parameters for the Target Security Profile: Administrator accounts used only for maintenance; daily tasks use standard accounts.
+70.	Proposed enhancements: Log all privileged function executions centrally.
+71.	Possible compensating control: None.
+72.	Rationale for the decision: ESET and Loza-1 require administrative rights, which must be strictly separated from normal user sessions.
+73.	Responsible role: System Administrator.
+74.	Possible implementation evidence / verification artifact: Windows UAC settings, Loza-1 logs.
+75.	Information to be clarified with the system owner: Frequency of privileged access reviews.
+76.	Control identifier: AC-7, AC-8
+77.	Control name: Невдалі спроби входу в систему; Попередження про використання системи
+78.	Included in baseline profile: Yes.
+79.	Minimum baseline profile parameters: Notify responsible administrator.
+80.	Relevance to this ICS: High; brute force protection for confidential data access.
+81.	Security requirements addressed: Limiting failed logins; displaying legal warnings.
+82.	Risks mitigated: Password guessing attacks.
+83.	Draft decision: Refine parameters.
+84.	Proposed parameters for the Target Security Profile: Max 5 failed attempts; 30-minute lockout; mandatory legal banner at OS logon.
+85.	Proposed enhancements: Automatic email alert to SZI Head upon lockout.
+86.	Possible compensating control: None.
+87.	Rationale for the decision: The baseline requires the organization to define exact thresholds.
+88.	Responsible role: System Administrator.
+89.	Possible implementation evidence / verification artifact: Group Policy Object (GPO) configuration.
+90.	Information to be clarified with the system owner: Acceptability of the 5-attempt/30-minute threshold.
+91.	Control identifier: AC-11
+92.	Control name: Блокування пристрою
+93.	Included in baseline profile: Yes.
+94.	Minimum baseline profile parameters: Max 30 minutes inactivity timeout.
+95.	Relevance to this ICS: High; physical workstations in Room 2.
+96.	Security requirements addressed: Session lock to prevent unauthorized physical access.
+97.	Risks mitigated: Unattended active sessions.
+98.	Draft decision: Add enhancement.
+99.	Proposed parameters for the Target Security Profile: 15 minutes inactivity timeout.
+100.	Proposed enhancements: Use a blank screen or corporate logo as the public image lock.
+101.	Possible compensating control: None.
+102.	Rationale for the decision: "Confidential" data handling warrants a stricter timeout than the 30-minute maximum.
+103.	Responsible role: System Administrator.
+104.	Possible implementation evidence / verification artifact: OS screen saver/lock policies.
+105.	Information to be clarified with the system owner: None.
+106.	Control identifier: AC-12
+107.	Control name: Припинення сеансу
+108.	Included in baseline profile: Yes.
+109.	Minimum baseline profile parameters: Defined by organization.
+110.	Relevance to this ICS: High.
+111.	Security requirements addressed: Automatic session termination.
+112.	Risks mitigated: Abandoned remote or local sessions.
+113.	Draft decision: Clarification required.
+114.	Proposed parameters for the Target Security Profile: TBD.
+115.	Proposed enhancements: TBD.
+116.	Possible compensating control: TBD.
+117.	Rationale for the decision: The baseline requires specific organizational conditions for termination, which are not detailed in the passport.
+118.	Responsible role: Head of SZI.
+119.	Possible implementation evidence / verification artifact: Session timeout configurations.
+120.	Information to be clarified with the system owner: What specific conditions require forced session termination (e.g., end of business hours)?
+121.	Control identifier: AC-17, AC-18, AC-19, AC-20, AC-22
+122.	Control name: Віддалений доступ; Бездротовий доступ; Контроль доступу для мобільних пристроїв; Використання зовнішніх систем; Публічно доступний контент
+123.	Included in baseline profile: Yes.
+124.	Minimum baseline profile parameters: Various organizational limits.
+125.	Relevance to this ICS: Potentially relevant (Lenovo laptop is present).
+126.	Security requirements addressed: Controlling off-site, wireless, and mobile access.
+127.	Risks mitigated: External network interception, unauthorized device connection.
+128.	Draft decision: Clarification required.
+129.	Proposed parameters for the Target Security Profile: TBD.
+130.	Proposed enhancements: TBD.
+131.	Possible compensating control: TBD.
+132.	Rationale for the decision: The passport does not specify if the Lenovo ThinkPad connects via Wi-Fi, if remote VPN is used via FortiGate, or if mobile devices are allowed.
+133.	Responsible role: Head of SZI.
+134.	Possible implementation evidence / verification artifact: Wi-Fi controller configs, FortiGate VPN logs.
+135.	Information to be clarified with the system owner: Does the system use wireless networks, remote VPN access, or mobile devices?
+136.	Control identifier: AU-2
+137.	Control name: Події аудиту
+138.	Included in baseline profile: Yes. 
+139.	Minimum baseline profile parameters: Types of events to be defined by the organization. 
+140.	Relevance to this ICS: High. The system must register attempts to realize threats and unauthorized actions with restricted information. 
+141.	Security requirements addressed: Defining the explicit list of events that are recorded in the system. 
+142.	Risks mitigated: Inability to trace unauthorized access, privilege escalation, or malicious actions post-incident.
+143.	Draft decision: Clarification required.
+144.	Proposed parameters for the Target Security Profile: TBD.
+145.	Proposed enhancements: TBD.
+146.	Possible compensating control: TBD.
+147.	Rationale for the decision: The passport states that the system registers security events via specialized software, but the exact list of audited events (e.g., logons, object access, policy changes) must be formally defined by the organization to meet the baseline.
+148.	Responsible role: Head of SZI / System Administrator. 
+149.	Possible implementation evidence / verification artifact: Audit policy settings in Windows 10 and "Loza-1". 
+150.	Information to be clarified with the system owner: The precise list of system events that must be audited and recorded.
+151.	Control identifier: AU-6
+152.	Control name: Огляд, аналіз і звітність аудиту
+153.	Included in baseline profile: Yes. 
+154.	Minimum baseline profile parameters: Review at least weekly (seven days). 
+155.	Relevance to this ICS: High. Ensures timely detection of anomalies and notification to administrators. 
+156.	Security requirements addressed: Reviewing and analyzing audit records for unusual activity. 
+157.	Risks mitigated: Delayed detection of security breaches or insider threats.
+158.	Draft decision: Keep unchanged.
+159.	Proposed parameters for the Target Security Profile: Weekly review of logs generated by Windows 10, "Loza-1", and ESET Endpoint Security. 
+160.	Proposed enhancements: None.
+161.	Possible compensating control: None.
+162.	Rationale for the decision: The weekly review parameter strictly aligns with the baseline requirement and is feasible for the established SZI personnel to perform. 
+163.	Responsible role: Lead Specialist of SZI. 
+164.	Possible implementation evidence / verification artifact: Log review reports or signed system checklists.
+165.	Information to be clarified with the system owner: None.
+166.	Control identifier: CM-7
+167.	Control name: Мінімально необхідна функціональність
+168.	Included in baseline profile: Yes. 
+169.	Minimum baseline profile parameters: Review at least annually or upon system changes; applies to all functions, ports, protocols, and software. 
+170.	Relevance to this ICS: High. Limits the attack surface on the HP Server, Dell desktop, and Lenovo laptop. 
+171.	Security requirements addressed: Configuring the system to provide only essential functions and disabling unnecessary or insecure ports/services. 
+172.	Risks mitigated: Exploitation of vulnerable, unpatched, or unused default OS services.
+173.	Draft decision: Refine parameters.
+174.	Proposed parameters for the Target Security Profile: Annual review ; block all unused ports on the FortiGate 60F; disable non-essential Windows 10 services.
+175.	Proposed enhancements: Implement application whitelisting enforcing only the execution of the software explicitly listed in the passport (Windows 10, Office 2021, IT-Tour, ESET, Loza-1). 
+176.	Possible compensating control: None.
+177.	Rationale for the decision: The passport already defines a strict list of allowed software; formalizing this into a "deny all, permit by exception" policy fulfills the baseline intent robustly.
+178.	Responsible role: System Administrator. 
+179.	Possible implementation evidence / verification artifact: Windows AppLocker policies and FortiGate port rules. 
+180.	Information to be clarified with the system owner: The exact list of network ports required for "IT-Tour: Agency" to function correctly. 
+181.	Control identifier: IR-4
+182.	Control name: Обробка інциденту
+183.	Included in baseline profile: Yes. 
+184.	Minimum baseline profile parameters: Implement a system that aligns with the incident response plan (preparation, detection, containment, eradication, recovery). 
+185.	Relevance to this ICS: High. The system processes official and confidential information. 
+186.	Security requirements addressed: Handling and responding to security incidents systematically. 
+187.	Risks mitigated: Uncontrolled spread and impact of successful cyberattacks or data breaches.
+188.	Draft decision: Clarification required.
+189.	Proposed parameters for the Target Security Profile: TBD.
+190.	Proposed enhancements: TBD.
+191.	Possible compensating control: TBD.
+192.	Rationale for the decision: The passport lists personnel and technical maintenance plans, but does not indicate the existence of a formalized incident response plan or workflow.
+193.	Responsible role: Head of Security / Head of SZI. 
+194.	Possible implementation evidence / verification artifact: Documented Incident Response Plan.
+195.	Information to be clarified with the system owner: Does a formal incident response procedure or plan currently exist for this specific system?
+196.	Control identifier: MP-6
+197.	Control name: Знищення інформації на носіях інформації
+198.	Included in baseline profile: Yes. 
+199.	Minimum baseline profile parameters: Applies to all types of digital and non-digital media containing information not authorized for public release. 
+200.	Relevance to this ICS: High. The system involves processing paper documents and digital data marked with the "confidential" restriction. 
+201.	Security requirements addressed: Sanitizing media before disposal, release, or reuse. 
+202.	Risks mitigated: Data recovery from discarded hard drives, laptops, or improperly disposed printed documents.
+203.	Draft decision: Refine parameters.
+204.	Proposed parameters for the Target Security Profile: Mandatory physical destruction (e.g., shredding) for paper documents; guaranteed cryptographic erasure or physical destruction for digital media (HDD/SSD from the HP Server, Dell, Lenovo). 
+205.	Proposed enhancements: None.
+206.	Possible compensating control: None.
+207.	Rationale for the decision: The baseline requires sanitization , but given the "confidential" and "For official use" marks, specific physical or cryptographic destruction methods should be parameterized to ensure unrecoverability.
+208.	Responsible role: Head of SZI. 
+209.	Possible implementation evidence / verification artifact: Signed media destruction acts.
+210.	Information to be clarified with the system owner: Current physical procedures utilized for destroying confidential paper waste and decommissioning IT equipment.
+211.	Control identifier: CP-9
+212.	Control name: Резервне копіювання
+213.	Included in baseline profile: Yes. 
+214.	Minimum baseline profile parameters: At least weekly; protect the confidentiality of backups. 
+215.	Relevance to this ICS: High. Critical for protecting the "IT-Tour: Agency" data and official documents from data loss. 
+216.	Security requirements addressed: Creating backups and implementing cryptographic mechanisms to prevent unauthorized disclosure of backup data. 
+217.	Risks mitigated: Complete data loss due to hardware failure, ransomware, or physical disaster.
+218.	Draft decision: Clarification required.
+219.	Proposed parameters for the Target Security Profile: TBD.
+220.	Proposed enhancements: TBD.
+221.	Possible compensating control: TBD.
+222.	Rationale for the decision: The passport details the server and an APC UPS, but entirely omits information about backup software, backup frequency, storage location, and encryption mechanisms used for the backups.
+223.	Responsible role: System Administrator. 
+224.	Possible implementation evidence / verification artifact: Backup schedule documentation and encryption configurations.
+225.	Information to be clarified with the system owner: What is the current backup strategy (frequency, media type, off-site storage, and encryption)?
+226.	Control identifier: RA-5
+227.	Control name: Сканування вразливостей
+228.	Included in baseline profile: Yes. 
+229.	Minimum baseline profile parameters: Update vulnerabilities within 24 hours prior to scanning. 
+230.	Relevance to this ICS: High. Essential for maintaining the security of Windows 10, Office 2021, and the FortiGate firewall. 
+231.	Security requirements addressed: Monitoring and scanning for vulnerabilities; resolving them within a defined timeframe. 
+232.	Risks mitigated: Exploitation of known, unpatched software vulnerabilities by attackers.
+233.	Draft decision: Clarification required.
+234.	Proposed parameters for the Target Security Profile: TBD.
+235.	Proposed enhancements: TBD.
+236.	Possible compensating control: TBD.
+237.	Rationale for the decision: The passport notes planned technical maintenance and software integrity checks, but does not specify if active vulnerability scanning is performed or what specific tool is utilized for this purpose.
+238.	Responsible role: System Administrator. 
+239.	Possible implementation evidence / verification artifact: Vulnerability scan reports and patch management logs.
+240.	Information to be clarified with the system owner: Is a dedicated vulnerability scanner used on the network, and what is the required remediation timeframe for discovered flaws?
+241.	Control identifier: SC-7, SC-7(5)
+242.	Control name: Захист периметра
+243.	Included in baseline profile: Yes. 
+244.	Minimum baseline profile parameters: Deny network traffic by default, permit by exception. 
+245.	Relevance to this ICS: High. The system implies external network connections for the "IT-Tour: Agency" software and the FortiGate firewall. 
+246.	Security requirements addressed: Controlling communications at the external perimeter. 
+247.	Risks mitigated: External network intrusions, unauthorized inbound/outbound traffic routing.
+248.	Draft decision: Refine parameters.
+249.	Proposed parameters for the Target Security Profile: Implement strict "default deny" rules on the FortiGate 60F ; configure exceptions explicitly for outbound traffic required by IT-Tour and OS updates. 
+250.	Proposed enhancements: None.
+251.	Possible compensating control: None.
+252.	Rationale for the decision: The passport confirms the presence of the FortiGate 60F firewall , which is the exact hardware required to implement the baseline "default deny" parameter effectively.
+253.	Responsible role: System Administrator. 
+254.	Possible implementation evidence / verification artifact: FortiGate 60F rulebase export showing the default deny policy.
+255.	Information to be clarified with the system owner: A complete list of legitimate outbound and inbound network connections required for business operations.
+256.	Control identifier: SC-8, SC-28
+257.	Control name: Конфіденційність і цілісність передачі. Захист інформації у стані спокою
+258.	Included in baseline profile: Yes. 
+259.	Minimum baseline profile parameters: Applies to all information; all system components and media. 
+260.	Relevance to this ICS: High. The data is explicitly marked "For official use" and "confidential". 
+261.	Security requirements addressed: Cryptographic protection for data in transit and at rest to prevent unauthorized disclosure. 
+262.	Risks mitigated: Data interception on the local network; data extraction from stolen physical hard drives.
+263.	Draft decision: Clarification required.
+264.	Proposed parameters for the Target Security Profile: TBD.
+265.	Proposed enhancements: TBD.
+266.	Possible compensating control: TBD.
+267.	Rationale for the decision: The passport does not explicitly state if the HP Server, Dell desktop, and Lenovo laptop utilize full-disk encryption (e.g., Windows BitLocker) or if internal network traffic between the server and clients is encrypted.
+268.	Responsible role: System Administrator. 
+269.	Possible implementation evidence / verification artifact: BitLocker drive encryption status reports, TLS configuration on internal services.
+270.	Information to be clarified with the system owner: Are the internal hard drives currently encrypted? Is internal network traffic encrypted?
+271.	Control identifier: SI-3
+272.	Control name: Захист від шкідливого коду
+273.	Included in baseline profile: Yes. 
+274.	Minimum baseline profile parameters: Minimum weekly scanning; applied to endpoints and network entry/exit points; block and quarantine actions. 
+275.	Relevance to this ICS: High. Essential protection for the Windows workstations and server.
+276.	Security requirements addressed: Implementing anti-malware mechanisms, scanning, and blocking malicious code. 
+277.	Risks mitigated: Virus, ransomware, or trojan infections compromising confidential data.
+278.	Draft decision: Refine parameters.
+279.	Proposed parameters for the Target Security Profile: Enforce real-time file protection and minimum weekly full disk scans using the installed ESET Endpoint Security v.10.0. Actions must be strictly set to block/quarantine.
+280.	Proposed enhancements: Centralized management alerting the System Administrator immediately upon threat detection.
+281.	Possible compensating control: None.
+282.	Rationale for the decision: The passport indicates ESET is installed and the databases are updated. The Target Profile formally binds the baseline parameters (weekly scans, block actions) to this specific software.
+283.	Responsible role: System Administrator. 
+284.	Possible implementation evidence / verification artifact: ESET central policy configuration.
+285.	Information to be clarified with the system owner: None.
+286.	Control identifier: AT-2, AT-2(2), AT-2(3)
+287.	Control name: Навчання з підвищення обізнаності 
+288.	Included in baseline profile: Yes.
+289.	Minimum baseline profile parameters: a.1. щонайменше раз на рік (at least once a year).
+290.	Relevance to this ICS: High. The system users process restricted information with a "confidential" restriction label.
+291.	Security requirements addressed: Providing basic security awareness training upon initial access, periodically, and upon system changes.
+292.	Risks mitigated: Insider threats, social engineering, and unintentional mishandling of restricted information.
+293.	Draft decision: Refine parameters.
+294.	Proposed parameters for the Target Security Profile: Security awareness training must be conducted at least annually for all active users and immediately following any major update to the ASVB policies.
+295.	Proposed enhancements: Include specific modules detailing the handling of "confidential" paper and electronic documents, as well as the physical security protocols of Room № 2.
+296.	Possible compensating control: None.
+297.	Rationale for the decision: The baseline explicitly mandates annual training. Given the "confidential" nature of the data handled in the facility, customized awareness focusing on this classification is crucial.
+298.	Responsible role: Керівник СЗІ (Head of SZI).
+299.	Possible implementation evidence / verification artifact: Training logs and signed acts of familiarization with security policies.
+300.	Information to be clarified with the system owner: Keep unchanged.
+301.	Control identifier: AT-3
+302.	Control name: Рольове навчання 
+303.	Included in baseline profile: Yes.
+304.	Minimum baseline profile parameters: a.1. щонайменше щороку (at least annually).
+305.	Relevance to this ICS: High. The system relies on personnel with specific roles, such as the System Administrator and Lead SZI Specialist.
+306.	Security requirements addressed: Providing comprehensive role-based security training prior to authorizing access and periodically thereafter.
+307.	Risks mitigated: Administrative errors leading to misconfigurations, disabling of protective tools, or data exposure.
+308.	Draft decision: Refine parameters.
+309.	Proposed parameters for the Target Security Profile: Annual role-specific training must be mandated for the System Administrator (focusing on FortiGate 60F and ESET configurations) and the SZI Lead Specialist (focusing on "Loza-1" and Gnom-VCh-01 management).
+310.	Proposed enhancements: None.
+311.	Possible compensating control: None.
+312.	Rationale for the decision: The technical security of the system heavily depends on specialized hardware and software. Role-based training ensures administrators remain competent in operating these specific defenses.
+313.	Responsible role: Керівник СЗІ (Head of SZI).
+314.	Possible implementation evidence / verification artifact: Training certificates or internal competency review records.
+315.	Information to be clarified with the system owner: Keep unchanged.
+316.	Control identifier: AU-3, AU-3(1)
+317.	Control name: Зміст записів аудиту 
+318.	Included in baseline profile: Yes.
+319.	Minimum baseline profile parameters: Must contain event type, time, location, source, outcome, and associated user/subject identity.
+320.	Relevance to this ICS: High. Critical for investigating incidents on the HP Server and Dell/Lenovo workstations.
+321.	Security requirements addressed: Ensuring audit records capture sufficient forensic detail.
+322.	Risks mitigated: Inability to attribute malicious actions or system modifications to a specific user account.
+323.	Draft decision: Keep unchanged.
+324.	Proposed parameters for the Target Security Profile: Audit logs generated by Windows 10, "Loza-1" v.2.0, and FortiGate 60F must capture event type, time, source, outcome, and user identity.
+325.	Proposed enhancements: None.
+326.	Possible compensating control: None.
+327.	Rationale for the decision: Standard operating system logging (Windows 10) combined with the "Loza-1" protection system natively captures the required baseline attributes without further modification.
+328.	Responsible role: Системний адміністратор (System Administrator).
+329.	Possible implementation evidence / verification artifact: Exported sample of audit logs demonstrating the required fields.
+330.	Information to be clarified with the system owner: Keep unchanged.
+331.	Control identifier: AU-11, AU-12
+332.	Control name: Збереження записів аудиту 
+333.	Included in baseline profile: Yes.
+334.	Minimum baseline profile parameters: a. всі інформаційні системи та мережеві компоненти (all information systems and network components).
+335.	Relevance to this ICS: High. Necessary for long-term forensic analysis and compliance tracking in the "UA-Travel" ASVB.
+336.	Security requirements addressed: Generating audit records for required components and retaining them according to organizational policy.
+337.	Risks mitigated: Loss of the audit trail due to automatic log rotation, deletion, or insufficient storage capacity before an incident is discovered.
+338.	Draft decision: Clarification required.
+339.	Proposed parameters for the Target Security Profile: TBD.
+340.	Proposed enhancements: TBD.
+341.	Possible compensating control: TBD.
+342.	Rationale for the decision: The baseline explicitly states that records must be kept for a period that aligns with the "organization's audit record retention policy". However, the passport does not specify this required timeframe.
+343.	Responsible role: Системний адміністратор (System Administrator).
+344.	Possible implementation evidence / verification artifact: Log retention configuration settings on the server and firewall.
+345.	Information to be clarified with the system owner: What is the organizationally defined retention period for system and security audit logs (e.g., 90 days, 1 year)?
+346.	Control identifier: AU-5
+347.	Control name: Реагування на відмови обробки даних аудиту 
+348.	Included in baseline profile: Yes.
+349.	Minimum baseline profile parameters: a. 2-ий параметр: майже в реальному часі (almost in real-time).
+350.	Relevance to this ICS: High. If logging fails or storage fills up, security visibility of the confidential data is completely lost.
+351.	Security requirements addressed: Alerting responsible personnel in near real-time if an audit processing failure occurs.
+352.	Risks mitigated: Silent failure of security monitoring leading to unlogged malicious activity.
+353.	Draft decision: Refine parameters.
+354.	Proposed parameters for the Target Security Profile: Implement near real-time alerts (e.g., automated email notifications) specifically to the System Administrator and SZI Lead Specialist upon audit system failure or log storage exhaustion.
+355.	Proposed enhancements: Automatically halt non-critical data processing or network access if the auditing system completely fails.
+356.	Possible compensating control: None.
+357.	Rationale for the decision: The baseline requirement for "near real-time" alerts must be practically parameterized by assigning the alerts to the existing responsible roles designated in the passport.
+358.	Responsible role: Системний адміністратор (System Administrator).
+359.	Possible implementation evidence / verification artifact: Alert/notification configurations in Windows Event Viewer, "Loza-1", or FortiGate.
+360.	Information to be clarified with the system owner: Keep unchanged.
+361.	Control identifier: AU-7
+362.	Control name: Скорочення записів аудиту та формування звіту 
+363.	Included in baseline profile: Yes.
+364.	Minimum baseline profile parameters: None specific; requires the function to exist and preserve original content/time order.
+365.	Relevance to this ICS: Moderate. It is necessary for effectively reviewing logs from the HP server and FortiGate firewall.
+366.	Security requirements addressed: Providing audit reduction and report generation tools to support post-incident investigations without altering original data.
+367.	Risks mitigated: Inability to parse or interpret massive volumes of raw log data during a time-sensitive security incident.
+368.	Draft decision: Keep unchanged.
+369.	Proposed parameters for the Target Security Profile: Utilize the built-in filtering, sorting, and reporting capabilities of Windows Event Viewer, "Loza-1", and FortiOS to view logs.
+370.	Proposed enhancements: None.
+371.	Possible compensating control: None.
+372.	Rationale for the decision: Standard operating system and firewall management tools inherently provide sufficient log reduction and reporting capabilities to meet this requirement for a Class 2 system.
+373.	Responsible role: Системний адміністратор (System Administrator).
+374.	Possible implementation evidence / verification artifact: Generation of a sample filtered security audit report.
+375.	Information to be clarified with the system owner: Keep unchanged.
+376.	Control identifier: AU-8
+377.	Control name: Позначка часу 
+378.	Included in baseline profile: Yes.
+379.	Minimum baseline profile parameters: Use internal clock, utilizing UTC or a fixed local offset relative to UTC.
+380.	Relevance to this ICS: High. Accurate time is crucial for correlating events between the HP ProLiant server, workstations, and the FortiGate firewall.
+381.	Security requirements addressed: Generating accurate time stamps for all audit records.
+382.	Risks mitigated: Time discrepancies across devices making it impossible to establish a reliable forensic timeline.
+383.	Draft decision: Refine parameters.
+384.	Proposed parameters for the Target Security Profile: All system components must synchronize their internal clocks via a designated internal NTP server (e.g., the HP ProLiant server acting as the Domain Controller) using the local offset UTC (Kyiv) / UTC (Summer).
+385.	Proposed enhancements: None.
+386.	Possible compensating control: None.
+387.	Rationale for the decision: Synchronizing time across all hardware components explicitly operationalizes the baseline requirement for accurate, offset-based timestamps.
+388.	Responsible role: Системний адміністратор (System Administrator).
+389.	Possible implementation evidence / verification artifact: NTP configuration settings verified on workstations and network equipment.
+390.	Information to be clarified with the system owner: Keep unchanged.
+391.	Control identifier: AU-9, AU-9(4)
+392.	Control name: Захист інформації аудиту 
+393.	Included in baseline profile: Yes.
+394.	Minimum baseline profile parameters: Provide audit management access only to a subset of privileged users/roles.
+395.	Relevance to this ICS: High. Protects the integrity of the system's security history.
+396.	Security requirements addressed: Protecting audit information and tools from unauthorized access, modification, and deletion.
+397.	Risks mitigated: Attackers or malicious insiders covering their tracks by altering or deleting log files.
+398.	Draft decision: Keep unchanged.
+399.	Proposed parameters for the Target Security Profile: Restrict access to audit logs and logging configurations strictly to the System Administrator and Lead SZI Specialist.
+400.	Proposed enhancements: None.
+401.	Possible compensating control: None.
+402.	Rationale for the decision: The system currently deploys "Loza-1" v.2.0 (software for protection against unauthorized access), which natively enforces strict file and directory permissions, fully satisfying this control.
+403.	Responsible role: Системний адміністратор (System Administrator).
+404.	Possible implementation evidence / verification artifact: File permission properties and access matrices for audit log directories.
+405.	Information to be clarified with the system owner: Keep unchanged.
+406.	Control identifier: CM-2, CM-6
+407.	Control name: Базова конфігурація; Налаштування конфігурації 
+408.	Included in baseline profile: Yes.
+409.	Minimum baseline profile parameters: b.1. щонайменше щороку (at least annually); c. всі конфігуровані компоненти системи (all configurable system components).
+410.	Relevance to this ICS: High. The system's security is anchored to a specific set of hardware and software.
+411.	Security requirements addressed: Developing, documenting, maintaining, and reviewing the baseline configuration.
+412.	Risks mitigated: Unauthorized configuration drift introducing vulnerabilities over time.
+413.	Draft decision: Refine parameters.
+414.	Proposed parameters for the Target Security Profile: The documented baseline comprises Windows 10 Pro 22H2, Office 2021, IT-Tour v.5.4, ESET v.10.0, and "Loza-1" v.2.0. This baseline configuration must undergo formal review at least annually.
+415.	Proposed enhancements: None.
+416.	Possible compensating control: None.
+417.	Rationale for the decision: The system passport effectively acts as the documented baseline configuration. The Target Profile adds the strict procedural requirement for the annual review mandated by the baseline.
+418.	Responsible role: Провідний спеціаліст СЗІ (Lead SZI Specialist).
+419.	Possible implementation evidence / verification artifact: Annual configuration check acts (similar to existing act records).
+420.	Information to be clarified with the system owner: Keep unchanged.
+421.	Control identifier: CM-3
+422.	Control name: Управління змінами конфігурації 
+423.	Included in baseline profile: Yes.
+424.	Minimum baseline profile parameters: e. 1 рік (retain records for 1 year).
+425.	Relevance to this ICS: High. Uncontrolled changes to the ASVB can compromise the "confidential" data.
+426.	Security requirements addressed: Controlling, reviewing, approving, and retaining records of changes to the system.
+427.	Risks mitigated: Unauthorized or untested changes causing security breaches or system instability.
+428.	Draft decision: Refine parameters.
+429.	Proposed parameters for the Target Security Profile: All software or hardware modifications must be explicitly approved by the Head of SZI, formally logged into the Passport-Formulary, and these records must be retained for a minimum of 1 year.
+430.	Proposed enhancements: None.
+431.	Possible compensating control: None.
+432.	Rationale for the decision: The Passport's general provisions already dictate that only SZI representatives have the right to make changes to the system based on reporting documents. Defining the 1-year retention period perfectly aligns this practice with CM-3.
+433.	Responsible role: Керівник СЗІ (Head of SZI).
+434.	Possible implementation evidence / verification artifact: Updated Passport-Formulary entries and retained acts of installation/removal.
+435.	Information to be clarified with the system owner: Keep unchanged.
+436.	Control identifier: CM-4, CM-4(2)
+437.	Control name: Аналіз впливу на безпеку та приватність
+438.	Included in baseline profile: Yes.
+439.	Minimum baseline profile parameters: Analyze security impact prior to implementation; verify security actions post-implementation.
+440.	Relevance to this ICS: High. Any changes to the server, workstations, or firewall could expose the information with the "confidential" restriction label.
+441.	Security requirements addressed: Security impact analysis before authorized changes.
+442.	Risks mitigated: Implementing unverified changes that break existing security boundaries or introduce vulnerabilities.
+443.	Draft decision: Keep unchanged.
+444.	Proposed parameters for the Target Security Profile: The SZI Lead Specialist must formally analyze and approve the security impact before any modifications to the "IT-Tour" software or network configurations.
+445.	Proposed enhancements: None.
+446.	Possible compensating control: None.
+447.	Rationale for the decision: The system passport dictates that SZI representatives make changes based on reporting documents. Mandating an impact analysis fits perfectly into this established workflow.
+448.	Responsible role: Керівник СЗІ / Провідний спеціаліст СЗІ (Head of SZI / Lead SZI Specialist).
+449.	Possible implementation evidence / verification artifact: Act of security impact assessment signed prior to system changes.
+450.	Information to be clarified with the system owner: None.
+451.	Control identifier: CM-5
+452.	Control name: Обмеження доступу до змін
+453.	Included in baseline profile: Yes.
+454.	Minimum baseline profile parameters: Define, document, approve, and implement physical and logical access limits related to system changes.
+455.	Relevance to this ICS: High. Physical and logical access to the HP Server and FortiGate firewall must be strictly controlled to prevent unauthorized tampering.
+456.	Security requirements addressed: Physical and logical restrictions to system changes.
+457.	Risks mitigated: Unauthorized or malicious modifications by non-administrative personnel.
+458.	Draft decision: Keep unchanged.
+459.	Proposed parameters for the Target Security Profile: Physical access is restricted to Room 2 (metal doors, alarms). Logical access to system changes is restricted via the "Loza-1" v.2.0 software.
+460.	Proposed enhancements: None.
+461.	Possible compensating control: None.
+462.	Rationale for the decision: The passport shows Room 2 is already physically restricted, guarded, and logically protected by specialized software, which inherently limits who can make changes.
+463.	Responsible role: Відповідальний за приміщення (Коваленко О.П.) / Системний адміністратор (System Administrator).
+464.	Possible implementation evidence / verification artifact: Access control lists for Room 2 and "Loza-1" administrative policies.
+465.	Information to be clarified with the system owner: None.
+466.	Control identifier: CM-7(5)
+467.	Control name: Мінімально необхідна функціональність - авторизоване програмне забезпечення (білий список)
+468.	Included in baseline profile: Yes.
+469.	Minimum baseline profile parameters: c. щонайменше раз на рік (at least annually); implement a "deny all, permit by exception" policy.
+470.	Relevance to this ICS: High. Crucial for preventing unauthorized applications from running on workstations handling confidential data.
+471.	Security requirements addressed: Whitelisting authorized software and blocking all others.
+472.	Risks mitigated: Execution of malware, ransomware, or unapproved shadow IT tools on the system.
+473.	Draft decision: Refine parameters.
+474.	Proposed parameters for the Target Security Profile: Explicitly whitelist the approved stack: Windows 10 Pro (22H2), Office Standard 2021, IT-Tour v.5.4, ESET v.10.0, Loza-1 v.2.0, and FortiGate/Gnom-VCh firmware. Review the whitelist annually.
+475.	Proposed enhancements: Implement this whitelist technically using Windows AppLocker or the application control module within "Loza-1".
+476.	Possible compensating control: None.
+477.	Rationale for the decision: The passport already lists the exact authorized software stack. Transitioning this list into a technical "deny all" whitelist operationalizes the baseline requirement effectively.
+478.	Responsible role: Системний адміністратор (System Administrator).
+479.	Possible implementation evidence / verification artifact: AppLocker or "Loza-1" execution rules export.
+480.	Information to be clarified with the system owner: None.
+481.	Control identifier: CM-8
+482.	Control name: Інвентаризація компонентів системи
+483.	Included in baseline profile: Yes.
+484.	Minimum baseline profile parameters: a.5. hardware specs, software, owner; b. щонайменше щороку (at least annually).
+485.	Relevance to this ICS: High. Maintaining an accurate inventory is foundational for protecting the specific hardware assets listed.
+486.	Security requirements addressed: Developing and updating the system component inventory.
+487.	Risks mitigated: Unmanaged hardware/software (shadow IT) introducing unmonitored vulnerabilities into the environment.
+488.	Draft decision: Keep unchanged.
+489.	Proposed parameters for the Target Security Profile: Maintain the current inventory tables encompassing the HP ProLiant DL360, Dell OptiPlex 7090, Lenovo ThinkPad X1, and Cisco Catalyst 2960-L. Update this inventory at least annually.
+490.	Proposed enhancements: None.
+491.	Possible compensating control: None.
+492.	Rationale for the decision: The provided Passport-Formulary already acts as a robust, highly detailed inventory containing serial numbers, installation dates, and hardware types.
+493.	Responsible role: Керівник СЗІ (Head of SZI).
+494.	Possible implementation evidence / verification artifact: Updated Passport-Formulary tables signed annually.
+495.	Information to be clarified with the system owner: None.
+496.	Control identifier: CM-8(1), CM-12
+497.	Control name: Розташування інформації
+498.	Included in baseline profile: Yes.
+499.	Minimum baseline profile parameters: Identify and document the location of official information; document changes to components where it is processed.
+500.	Relevance to this ICS: High. Essential for tracking the physical and logical whereabouts of "confidential" data.
+501.	Security requirements addressed: Documenting where restricted information resides.
+502.	Risks mitigated: Data sprawl leading to confidential information being stored in unprotected zones.
+503.	Draft decision: Keep unchanged.
+504.	Proposed parameters for the Target Security Profile: Formally document that "confidential" data resides exclusively on the HP Server, Dell/Lenovo workstations in Room 2, and as paper documents within Room 2.
+505.	Proposed enhancements: None.
+506.	Possible compensating control: None.
+507.	Rationale for the decision: The passport already strictly defines Room 2 and the specific hardware inventory as the processing and storage boundaries for this data.
+508.	Responsible role: Відповідальний за приміщення (Коваленко О.П.).
+509.	Possible implementation evidence / verification artifact: ASVB architectural and furniture layout diagrams (Додаток _).
+510.	Information to be clarified with the system owner: None.
+511.	Control identifier: CM-2(7)
+512.	Control name: Базова конфігурація - конфігурація систем та компонентів для сфер з високим ризиком
+513.	Included in baseline profile: Yes.
+514.	Minimum baseline profile parameters: Provide specific configurations for individuals traveling to high-risk areas; apply security actions upon return.
+515.	Relevance to this ICS: Potentially relevant. The hardware inventory includes a Lenovo ThinkPad X1 Carbon laptop, which is inherently portable.
+516.	Security requirements addressed: Securing portable devices taken on travel and sanitizing them upon return.
+517.	Risks mitigated: Device compromise, theft, or data extraction while the laptop is outside the controlled environment of Room 2.
+518.	Draft decision: Clarification required.
+519.	Proposed parameters for the Target Security Profile: TBD.
+520.	Proposed enhancements: TBD.
+521.	Possible compensating control: TBD.
+522.	Rationale for the decision: The passport lists a laptop, but it does not specify if this laptop is ever removed from the controlled zone (Room 2) for business trips or remote work.
+523.	Responsible role: Системний адміністратор (System Administrator).
+524.	Possible implementation evidence / verification artifact: Travel laptop checkout and post-travel sanitization logs.
+525.	Information to be clarified with the system owner: Is the Lenovo ThinkPad laptop taken outside the controlled zone of Room 2 for travel or remote work? If yes, what are the pre-travel configuration and post-travel sanitization procedures?
+526.	Control identifier: IA-2, IA-11
+527.	Control name: Ідентифікація та автентифікація
+528.	Included in baseline profile: Yes.
+529.	Minimum baseline profile parameters: Uniquely identify/authenticate users; re-authenticate when required by circumstances.
+530.	Relevance to this ICS: High. Fundamental for controlling access to "confidential" data.
+531.	Security requirements addressed: Individual user identification and authentication.
+532.	Risks mitigated: Unauthorized access by anonymous or generic users.
+533.	Draft decision: Keep unchanged.
+534.	Proposed parameters for the Target Security Profile: Maintain unique accounts for each authorized individual (e.g., Коваленко, Мельник, Сидоренко). Require re-authentication after the 15-minute screen lock timeout.
+535.	Proposed enhancements: None.
+536.	Possible compensating control: None.
+537.	Rationale for the decision: Standard Operating System functionality combined with the "Loza-1" protection software natively and effectively satisfies this control without modification.
+538.	Responsible role: Системний адміністратор (System Administrator).
+539.	Possible implementation evidence / verification artifact: Active Directory or local OS account lists showing no shared accounts.
+540.	Information to be clarified with the system owner: None.
+541.	Control identifier: IA-3
+542.	Control name: Ідентифікація та автентифікація пристроїв
+543.	Included in baseline profile: Yes.
+544.	Minimum baseline profile parameters: Uniquely identify and authenticate devices before establishing a connection to the system.
+545.	Relevance to this ICS: High. Protects the local network from rogue devices being plugged into the switch.
+546.	Security requirements addressed: Device-level authentication.
+547.	Risks mitigated: An attacker plugging an unauthorized laptop into the Cisco Catalyst 2960-L switch to sniff traffic or access the server.
+548.	Draft decision: Refine parameters.
+549.	Proposed parameters for the Target Security Profile: Implement MAC address filtering or 802.1X port security on the Cisco Catalyst 2960-L switch to strictly allow only the authenticated MAC addresses of the HP Server, Dell workstation, Lenovo laptop, and HP printer.
+550.	Proposed enhancements: None.
+551.	Possible compensating control: None.
+552.	Rationale for the decision: The equipment list is strictly defined in the passport. Enforcing device authentication at the switch level prevents unauthorized physical network access in Room 2.
+553.	Responsible role: Системний адміністратор (System Administrator).
+554.	Possible implementation evidence / verification artifact: Cisco Catalyst switch port security or 802.1X configuration export.
+555.	Information to be clarified with the system owner: None.
+556.	Control identifier: IA-2(1), IA-2(2)
+557.	Control name: Багатофакторна автентифікація привілейованих облікових записів
+558.	Included in baseline profile: Yes.
+559.	Minimum baseline profile parameters: Implement multi-factor authentication for access to system accounts.
+560.	Relevance to this ICS: High. Protects administrative and privileged access from credential theft.
+561.	Security requirements addressed: Multi-factor authentication (MFA) for privileged accounts.
+562.	Risks mitigated: Credential theft (e.g., via phishing or keylogging) leading to full system compromise.
+563.	Draft decision: Add enhancement.
+564.	Proposed parameters for the Target Security Profile: Implement hardware tokens (e.g., USB keys supported by Windows/Loza-1) for the System Administrator and Lead SZI Specialist accounts.
+565.	Proposed enhancements: Extend MFA to all standard user accounts, given the system processes "confidential" and "For official use" data.
+566.	Possible compensating control: None.
+567.	Rationale for the decision: The passport does not mention MFA, but the baseline explicitly requires it. Given the high restriction label of the data, hardware-based MFA should be added to secure privileged access.
+568.	Responsible role: Керівник СЗІ (Head of SZI).
+569.	Possible implementation evidence / verification artifact: MFA token assignment logs and OS authentication policy.
+570.	Information to be clarified with the system owner: None.
+571.	Control identifier: IA-4
+572.	Control name: Управління ідентифікацією
+573.	Included in baseline profile: Yes.
+574.	Minimum baseline profile parameters: d. щонайменше рік (at least 1 year) to prevent identifier reuse.
+575.	Relevance to this ICS: Relevant for user lifecycle management.
+576.	Security requirements addressed: Identifier assignment, approval, and reuse prevention.
+577.	Risks mitigated: Confusion, audit trail corruption, or access crossover when a new employee inherits an old employee's username.
+578.	Draft decision: Refine parameters.
+579.	Proposed parameters for the Target Security Profile: User IDs must be uniquely assigned based on name/role. Reusing a specific username (e.g., "imelnyk") is strictly prohibited for at least 1 year after the termination of the original user.
+580.	Proposed enhancements: None.
+581.	Possible compensating control: None.
+582.	Rationale for the decision: Explicitly prohibiting identifier reuse operationalizes the baseline requirement for identifier uniqueness and maintains the integrity of the audit logs over time.
+583.	Responsible role: Системний адміністратор (System Administrator).
+584.	Possible implementation evidence / verification artifact: Documented identity and access management policy.
+585.	Information to be clarified with the system owner: None.
+586.	Control identifier: IA-6
+587.	Control name: Зворотний зв'язок автентифікатора
+588.	Included in baseline profile: Yes.
+589.	Minimum baseline profile parameters: Ensure hidden feedback of authentication info during the authentication process.
+590.	Relevance to this ICS: High. Prevents password compromise via physical observation in the office.
+591.	Security requirements addressed: Obscuring password input.
+592.	Risks mitigated: Shoulder surfing by visitors or unauthorized staff within Room 2.
+593.	Draft decision: Keep unchanged.
+594.	Proposed parameters for the Target Security Profile: Asterisks or dots must automatically mask password input on the Windows 10 OS screens and within the "IT-Tour" software logins.
+595.	Proposed enhancements: None.
+596.	Possible compensating control: None.
+597.	Rationale for the decision: The standard default functionality of Windows 10 natively satisfies this control without requiring any additional configuration.
+598.	Responsible role: Системний адміністратор (System Administrator).
+599.	Possible implementation evidence / verification artifact: Visual verification during the login process.
+600.	Information to be clarified with the system owner: None.
+601.	Control identifier: IR-2
+602.	Control name: Навчання з реагування на інциденти
+603.	Included in baseline profile: Yes.
+604.	Minimum baseline profile parameters: Provide training within 30 working days of assuming role; update training at least annually.
+605.	Relevance to this ICS: High. Personnel must know how to respond to compromises of the restricted information handled by the system.
+606.	Security requirements addressed: Training system users and administrators on incident response procedures.
+607.	Risks mitigated: Mishandling of a security breach, leading to greater data loss, evidence destruction, or prolonged system downtime.
+608.	Draft decision: Refine parameters.
+609.	Proposed parameters for the Target Security Profile: Mandatory incident response training must be completed by the Head of Security, SZI Lead Specialist, and System Administrator within 30 working days of their appointment, and refreshed at least annually.
+610.	Proposed enhancements: Include practical simulations specific to the infrastructure, such as responding to alerts from the FortiGate 60F or ESET Endpoint Security.
+611.	Possible compensating control: None.
+612.	Rationale for the decision: The baseline parameters are clear but must be explicitly assigned to the responsible roles defined in the system passport.
+613.	Responsible role: Керівник СЗІ (Head of SZI).
+614.	Possible implementation evidence / verification artifact: Signed training logs and training materials.
+615.	Information to be clarified with the system owner: None.
+616.	Control identifier: IR-3
+617.	Control name: Перевірка реагувань на інциденти
+618.	Included in baseline profile: Yes.
+619.	Minimum baseline profile parameters: Test at least annually.
+620.	Relevance to this ICS: High. Validates that the organization can effectively respond to threats against the ASVB.
+621.	Security requirements addressed: Testing the effectiveness of incident response capabilities.
+622.	Risks mitigated: Ineffective response procedures or communication failures discovered only during an actual crisis.
+623.	Draft decision: Keep unchanged.
+624.	Proposed parameters for the Target Security Profile: Conduct a tabletop exercise or technical test of the incident response capabilities at least annually.
+625.	Proposed enhancements: None.
+626.	Possible compensating control: None.
+627.	Rationale for the decision: Testing annually aligns perfectly with the baseline minimums and ensures the SZI team maintains operational readiness.
+628.	Responsible role: Керівник СЗІ (Head of SZI).
+629.	Possible implementation evidence / verification artifact: Formal incident response test report and "lessons learned" documentation.
+630.	Information to be clarified with the system owner: None.
+631.	Control identifier: IR-5, IR-6
+632.	Control name: Моніторинг інциденту
+633.	Included in baseline profile: Yes.
+634.	Minimum baseline profile parameters: 2 hours.
+635.	Relevance to this ICS: High. Tracking and documenting incidents involving the confidential data processed in Room 2.
+636.	Security requirements addressed: Tracking, documenting, and communicating system security incidents.
+637.	Risks mitigated: Loss of incident details necessary for post-mortem analysis, reporting, and preventing future occurrences.
+638.	Draft decision: Refine parameters.
+639.	Proposed parameters for the Target Security Profile: The SZI Lead Specialist must formally document security incidents within 2 hours of detection using a standardized incident log.
+640.	Proposed enhancements: None.
+641.	Possible compensating control: None.
+642.	Rationale for the decision: Assigns the specific 2-hour baseline parameter directly to the designated SZI personnel responsible for security operations in the passport.
+643.	Responsible role: Провідний спеціаліст СЗІ (Lead SZI Specialist).
+644.	Possible implementation evidence / verification artifact: Security incident tracking log or ticketing system records.
+645.	Information to be clarified with the system owner: None.
+646.	Control identifier: IR-7
+647.	Control name: Моніторинг інциденту (reporting)
+648.	Included in baseline profile: Yes.
+649.	Minimum baseline profile parameters: Timeframe defined by organization; notify defined authorities.
+650.	Relevance to this ICS: High. Regulatory and organizational reporting of data breaches is critical for a Class 2 system.
+651.	Security requirements addressed: Reporting suspicious incidents to the designated incident response team and external/internal authorities.
+652.	Risks mitigated: Failure to meet legal, regulatory, or organizational reporting obligations during a breach.
+653.	Draft decision: Clarification required.
+654.	Proposed parameters for the Target Security Profile: TBD.
+655.	Proposed enhancements: TBD.
+656.	Possible compensating control: TBD.
+657.	Rationale for the decision: The passport does not specify which external or internal higher authorities (e.g., State authorities, VAT "SERZHANT" security) must be notified, nor the strict timeframe for this notification.
+658.	Responsible role: Начальник відділу безпеки (Head of Security).
+659.	Possible implementation evidence / verification artifact: Documented escalation and reporting matrix.
+660.	Information to be clarified with the system owner: Which specific external and internal authorities must be notified in the event of a breach, and what is the exact organizational timeframe for this notification?
+661.	Control identifier: IR-8
+662.	Control name: План реагування на інциденти
+663.	Included in baseline profile: Yes.
+664.	Minimum baseline profile parameters: Review and update at least annually; distribute to responsible personnel.
+665.	Relevance to this ICS: High. A formalized approach to handling security events is mandatory for protecting restricted information.
+666.	Security requirements addressed: Developing, distributing, and periodically updating a formal Incident Response Plan.
+667.	Risks mitigated: Ad-hoc, disorganized response leading to prolonged downtime, data exposure, and mismanagement of a crisis.
+668.	Draft decision: Clarification required.
+669.	Proposed parameters for the Target Security Profile: TBD.
+670.	Proposed enhancements: TBD.
+671.	Possible compensating control: TBD.
+672.	Rationale for the decision: The passport mentions a "Положення про СЗІ" (SZI Regulation), but does not explicitly confirm the existence of a dedicated, standalone Incident Response Plan that meets the comprehensive criteria of IR-8.
+673.	Responsible role: Начальник відділу безпеки (Head of Security).
+674.	Possible implementation evidence / verification artifact: Approved Incident Response Plan document.
+675.	Information to be clarified with the system owner: Does a formalized Incident Response Plan explicitly exist, and is it updated and distributed annually?
+676.	Control identifier: MA-3, MA-3(1), MA-3(2), MA-3(3)
+677.	Control name: Інструменти для обслуговування
+678.	Included in baseline profile: Yes.
+679.	Minimum baseline profile parameters: Review tools at least annually.
+680.	Relevance to this ICS: High. Maintenance tools (e.g., diagnostic USB drives) can bypass security controls or extract confidential data from the server or workstations.
+681.	Security requirements addressed: Approving, controlling, and monitoring maintenance tools; checking for unauthorized modifications; preventing unauthorized removal of tools containing data.
+682.	Risks mitigated: Malicious tools introduced during maintenance, or restricted data exfiltrated on unverified diagnostic equipment.
+683.	Draft decision: Refine parameters.
+684.	Proposed parameters for the Target Security Profile: Only formally approved organizational tools may be used for maintaining the HP Server and workstations. All diagnostic media must be scanned by ESET Endpoint Security v.10.0 prior to use. The list of approved tools must be reviewed annually.
+685.	Proposed enhancements: Strictly prohibit the removal of any diagnostic equipment containing official information from Room 2 without prior sanitization.
+686.	Possible compensating control: None.
+687.	Rationale for the decision: Adapts the baseline requirement to utilize the specific anti-virus software and physical boundary (Room 2) established in the passport.
+688.	Responsible role: Системний адміністратор (System Administrator).
+689.	Possible implementation evidence / verification artifact: Approved maintenance tools list; AV scan logs prior to maintenance tasks.
+690.	Information to be clarified with the system owner: None.
+691.	Control identifier: MA-4, MA-5
+692.	Control name: Віддалене обслуговування; Технічний персонал
+693.	Included in baseline profile: Yes.
+694.	Minimum baseline profile parameters: Approve and control remote sessions; implement MFA for remote sessions; establish an authorization process for maintenance personnel.
+695.	Relevance to this ICS: High. Regulates how the System Administrator or external vendors interact with the system infrastructure.
+696.	Security requirements addressed: Securing remote maintenance sessions with MFA and session termination; authorizing and escorting maintenance personnel.
+697.	Risks mitigated: Unauthorized system access via unmonitored remote support sessions or unescorted external technicians.
+698.	Draft decision: Keep unchanged.
+699.	Proposed parameters for the Target Security Profile: Technical maintenance must be performed exclusively by the designated System Administrator. Any external maintenance personnel must be explicitly authorized and physically escorted by the SZI Lead Specialist while in Room 2.
+700.	Proposed enhancements: If remote maintenance is ever utilized, it must be routed through the FortiGate 60F via VPN with MFA, and the session must be manually terminated immediately upon task completion.
+701.	Possible compensating control: None.
+702.	Rationale for the decision: The passport strictly defines the internal technical personnel responsible for maintenance. Enforcing escort rules and strict remote access conditions aligns with the baseline.
+703.	Responsible role: Керівник СЗІ / Системний адміністратор (Head of SZI / System Administrator).
+704.	Possible implementation evidence / verification artifact: Maintenance logs, physical visitor logs for Room 2, firewall VPN configurations.
+705.	Information to be clarified with the system owner: Is remote technical maintenance technically permitted for this system, and if so, how is it currently secured?
+706.	Control identifier: MP-2, MP-4
+707.	Control name: Доступ до носіїв інформації; Зберігання носіїв інформації
+708.	Included in baseline profile: Yes.
+709.	Minimum baseline profile parameters: Physically control and securely store media containing official information; restrict access to it.
+710.	Relevance to this ICS: High. The system processes physical paper documents and digital media with the "confidential" restriction label.
+711.	Security requirements addressed: Restricting logical and physical access to, and securely storing, media containing official information.
+712.	Risks mitigated: Physical theft or unauthorized viewing of confidential hard drives, USBs, or printed documents.
+713.	Draft decision: Refine parameters.
+714.	Proposed parameters for the Target Security Profile: All paper documents and removable media containing restricted information must be stored in secure safes or locked cabinets within Room 2. Logical access to digital media is restricted via "Loza-1".
+715.	Proposed enhancements: None.
+716.	Possible compensating control: None.
+717.	Rationale for the decision: Connects the baseline storage and access requirements directly to the physical security parameters of Room 2 and the logical access control of the "Loza-1" software.
+718.	Responsible role: Відповідальний за приміщення (Коваленко О.П.).
+719.	Possible implementation evidence / verification artifact: Physical access audits, safe key management logs.
+720.	Information to be clarified with the system owner: None.
+721.	Control identifier: MP-3, MP-5, SC-28
+722.	Control name: Маркування носіїв інформації; Транспортування носіїв інформації
+723.	Included in baseline profile: Yes.
+724.	Minimum baseline profile parameters: Apply to all types of digital and non-digital media containing information not authorized for public release; track media during transport.
+725.	Relevance to this ICS: High. Essential for handling "confidential" outputs (e.g., documents from the HP LaserJet network printer).
+726.	Security requirements addressed: Marking media with appropriate distribution limitations and securing/accounting for media during transport outside controlled areas.
+727.	Risks mitigated: Mishandling of confidential documents leading to their exposure or loss outside the secure perimeter of the facility.
+728.	Draft decision: Keep unchanged.
+729.	Proposed parameters for the Target Security Profile: All generated paper documents and removable media must be explicitly stamped or marked "Confidential" / "For official use". Any transport of such media outside Room 2 requires an entry in a dedicated accounting ledger.
+730.	Proposed enhancements: None.
+731.	Possible compensating control: None.
+732.	Rationale for the decision: Direct application of the baseline requirements to the document handling processes within the established secure room.
+733.	Responsible role: Провідний спеціаліст СЗІ (Lead SZI Specialist).
+734.	Possible implementation evidence / verification artifact: Document/media accounting ledgers and visually inspected media.
+735.	Information to be clarified with the system owner: None.
+736.	Control identifier: MP-7
+737.	Control name: Використання носіїв інформації
+738.	Included in baseline profile: Yes.
+739.	Minimum baseline profile parameters: Restrict or prohibit specific types of media; strictly prohibit removable media without an identifiable owner.
+740.	Relevance to this ICS: High. Workstations (Dell, Lenovo) feature USB ports that could be utilized for data exfiltration or malware introduction.
+741.	Security requirements addressed: Limiting or banning the use of certain media types, such as unmanaged personal USB flash drives.
+742.	Risks mitigated: Data leakage via unauthorized flash drives, or malware introduction via unverified removable media.
+743.	Draft decision: Refine parameters.
+744.	Proposed parameters for the Target Security Profile: Strictly prohibit the use of personal USB drives or unmanaged removable media. Only organizationally issued, registered, and identifiable USB drives are permitted. This must be enforced technically by "Loza-1" v.2.0.
+745.	Proposed enhancements: Disable unused physical USB ports on the HP Server and Dell workstation via BIOS/UEFI settings.
+746.	Possible compensating control: None.
+747.	Rationale for the decision: The "Loza-1" software is specifically designed to control peripheral device access. Leveraging it to technically block unowned media perfectly satisfies the baseline requirement.
+748.	Responsible role: Системний адміністратор (System Administrator).
+749.	Possible implementation evidence / verification artifact: "Loza-1" device control policies and the registered media inventory list.
+750.	Information to be clarified with the system owner: None.
+751.	Control identifier: PS-3
+752.	Control name: Перевірка персоналу
+753.	Included in baseline profile: Yes.
+754.	Minimum baseline profile parameters: Screen individuals before granting access; repeat screening based on organizational conditions.
+755.	Relevance to this ICS: High. Personnel handle data with "confidential" and "For official use" restriction labels.
+756.	Security requirements addressed: Personnel screening prior to system authorization.
+757.	Risks mitigated: Insider threat and granting access to untrustworthy individuals.
+758.	Draft decision: Refine parameters.
+759.	Proposed parameters for the Target Security Profile: Background checks must be completed by the Head of Security (Начальник відділу безпеки) before logical access privileges are assigned via "Loza-1" v.2.0.
+760.	Proposed enhancements: Re-screening triggered immediately upon a role change or involvement in a security incident.
+761.	Possible compensating control: None.
+762.	Rationale for the decision: Formalizes the baseline requirement using the specific security roles and access control software specified in the passport.
+763.	Responsible role: Начальник відділу безпеки (Head of Security).
+764.	Possible implementation evidence / verification artifact: Personnel screening clearance records.
+765.	Information to be clarified with the system owner: Frequency of routine re-screening for existing personnel (e.g., every 3 years).
+766.	Control identifier: PS-4
+767.	Control name: Звільнення персоналу
+768.	Included in baseline profile: Yes.
+769.	Minimum baseline profile parameters: Voluntary termination: ASAP, max 5 days; Involuntary: same day.
+770.	Relevance to this ICS: High. Prevents former employees from accessing confidential travel agency data.
+771.	Security requirements addressed: Terminating logical and physical access upon employment end.
+772.	Risks mitigated: Unauthorized access by disgruntled or former employees.
+773.	Draft decision: Keep unchanged.
+774.	Proposed parameters for the Target Security Profile: Adhere strictly to the baseline: maximum 5 days for voluntary termination, immediate (same day) for involuntary termination. "Loza-1" and Windows accounts must be disabled accordingly.
+775.	Proposed enhancements: Immediate surrender of all physical keys and access cards to Room № 2.
+776.	Possible compensating control: None.
+777.	Rationale for the decision: The baseline parameters are explicit and perfectly suited for protecting restricted information.
+778.	Responsible role: Системний адміністратор / Керівник СЗІ (System Administrator / Head of SZI).
+779.	Possible implementation evidence / verification artifact: HR termination notices cross-referenced with "Loza-1" account deactivation logs.
+780.	Information to be clarified with the system owner: None.
+781.	Control identifier: PS-5
+782.	Control name: Переведення персоналу
+783.	Included in baseline profile: Yes.
+784.	Minimum baseline profile parameters: Review and modify logical/physical access upon reassignment to ensure unnecessary access is removed.
+785.	Relevance to this ICS: High. Ensures the principle of least privilege is maintained if an employee changes roles within "UA-Travel".
+786.	Security requirements addressed: Adjusting access rights during personnel transfer.
+787.	Risks mitigated: Privilege creep over time leading to unauthorized access.
+788.	Draft decision: Keep unchanged.
+789.	Proposed parameters for the Target Security Profile: Access rights in "Loza-1" and the physical access list for Room № 2 must be reviewed and updated within 24 hours of a formal role transfer.
+790.	Proposed enhancements: None.
+791.	Possible compensating control: None.
+792.	Rationale for the decision: Fits directly into the standard identity management lifecycle governed by the SZI.
+793.	Responsible role: Системний адміністратор (System Administrator).
+794.	Possible implementation evidence / verification artifact: Role transfer orders matched with access modification logs.
+795.	Information to be clarified with the system owner: None.
+796.	Control identifier: PE-2
+797.	Control name: Авторизація фізичного доступу
+798.	Included in baseline profile: Yes.
+799.	Minimum baseline profile parameters: Review physical access list at least annually; remove access when no longer needed.
+800.	Relevance to this ICS: High. Physical access to Room № 2 provides direct access to the server, network equipment, and confidential paper documents.
+801.	Security requirements addressed: Maintaining and reviewing a formal list of authorized individuals for physical access.
+802.	Risks mitigated: Unauthorized physical entry leading to hardware theft or data compromise.
+803.	Draft decision: Refine parameters.
+804.	Proposed parameters for the Target Security Profile: The Head of Security must maintain the physical access list for Room № 2, updating it immediately upon personnel changes and conducting a formal review at least annually.
+805.	Proposed enhancements: None.
+806.	Possible compensating control: None.
+807.	Rationale for the decision: Merges the baseline requirement with the specific physical constraints of the organization's Room № 2 perimeter.
+808.	Responsible role: Начальник відділу безпеки / Відповідальний за приміщення (Head of Security / Room Manager).
+809.	Possible implementation evidence / verification artifact: Approved physical access list.
+810.	Information to be clarified with the system owner: None.
+811.	Control identifier: PE-6
+812.	Control name: Моніторинг фізичного доступу
+813.	Included in baseline profile: Yes.
+814.	Minimum baseline profile parameters: Monitor physical access; review physical access logs at least every 90 days.
+815.	Relevance to this ICS: High. Room № 2 is actively guarded by VAT "SERZHANT" and equipped with security alarms.
+816.	Security requirements addressed: Monitoring and reviewing physical access logs to detect incidents.
+817.	Risks mitigated: Undetected physical intrusion or unauthorized after-hours access to the facility.
+818.	Draft decision: Keep unchanged.
+819.	Proposed parameters for the Target Security Profile: The Head of Security must review access logs and alarm reports provided by VAT "SERZHANT" for Room № 2 at least every 90 days.
+820.	Proposed enhancements: None.
+821.	Possible compensating control: None.
+822.	Rationale for the decision: The baseline 90-day parameter is appropriate, and the organization already utilizes a dedicated security contractor (VAT "SERZHANT") to generate these monitoring logs.
+823.	Responsible role: Начальник відділу безпеки (Head of Security).
+824.	Possible implementation evidence / verification artifact: Signed 90-day physical access review reports.
+825.	Information to be clarified with the system owner: None.
+826.	Control identifier: PE-17
+827.	Control name: Альтернативне робоче місце
+828.	Included in baseline profile: Yes.
+829.	Minimum baseline profile parameters: Define alternative workplaces; apply organizational security actions there.
+830.	Relevance to this ICS: Potentially relevant, given the presence of a Lenovo ThinkPad X1 laptop.
+831.	Security requirements addressed: Securing remote or alternative work locations.
+832.	Risks mitigated: Data leakage or device compromise while working from home or an unsecured location.
+833.	Draft decision: Clarification required.
+834.	Proposed parameters for the Target Security Profile: TBD.
+835.	Proposed enhancements: TBD.
+836.	Possible compensating control: TBD.
+837.	Rationale for the decision: The passport does not specify if employees are authorized to work remotely with the Lenovo laptop outside of the controlled Room № 2 boundary.
+838.	Responsible role: Керівник СЗІ (Head of SZI).
+839.	Possible implementation evidence / verification artifact: Documented remote work policy.
+840.	Information to be clarified with the system owner: Is telework or the use of alternative workplaces authorized for this system?
+841.	Control identifier: PE-3, PE-5
+842.	Control name: Керування фізичним доступом
+843.	Included in baseline profile: Yes.
+844.	Minimum baseline profile parameters: Control entry/exit; maintain logs; escort visitors; secure keys; control access to output devices.
+845.	Relevance to this ICS: High. Provides direct physical protection for the server, workstations, and the network printer.
+846.	Security requirements addressed: Enforcing physical access controls and visitor escorting.
+847.	Risks mitigated: Physical tampering, theft of printed confidential documents, and unauthorized observation of restricted data.
+848.	Draft decision: Refine parameters.
+849.	Proposed parameters for the Target Security Profile: All visitors to Room № 2 must be logged and escorted by authorized personnel. Keys to Room № 2 must be secured. Printed output from the HP LaserJet Pro must be retrieved immediately to prevent unauthorized viewing.
+850.	Proposed enhancements: None.
+851.	Possible compensating control: None.
+852.	Rationale for the decision: Contextualizes the baseline requirements explicitly to the established physical perimeter (Room 2) and the listed output device (HP LaserJet).
+853.	Responsible role: Відповідальний за приміщення (Room Manager).
+854.	Possible implementation evidence / verification artifact: Visitor logbook for Room № 2, key management policy.
+855.	Information to be clarified with the system owner: None.
+856.	Control identifier: PE-4
+857.	Control name: Контроль доступу до джерел і ліній електроживлення
+858.	Included in baseline profile: Yes.
+859.	Minimum baseline profile parameters: Control physical access to power distribution and transmission lines.
+860.	Relevance to this ICS: High. The system relies on a distribution shield inside the controlled zone and a transformer outside.
+861.	Security requirements addressed: Preventing sabotage or unauthorized tampering with power sources.
+862.	Risks mitigated: Denial of service through power disruption or bypass of electronic security systems.
+863.	Draft decision: Keep unchanged.
+864.	Proposed parameters for the Target Security Profile: Rely on the existing physical security of the "Центральний" center for the transformer, and the Room № 2 perimeter for the internal distribution shield.
+865.	Proposed enhancements: None.
+866.	Possible compensating control: None.
+867.	Rationale for the decision: The passport already explicitly describes the physical routing and protection of power lines, which fully aligns with this control requirement
+868.	Responsible role: Відповідальний за приміщення (Room Manager).
+869.	Possible implementation evidence / verification artifact: Visual inspection of locked distribution shields.
+870.	Information to be clarified with the system owner: None.
+871.	Control identifier: RA-3, SR-6
+872.	Control name: Оцінювання ризику
+873.	Included in baseline profile: Yes.
+874.	Minimum baseline profile parameters: Assess risk of unauthorized disclosure; update at least annually or upon specific events.
+875.	Relevance to this ICS: High. The system processes restricted "confidential" / "For official use" information.
+876.	Security requirements addressed: Formal risk assessment regarding data processing.
+877.	Risks mitigated: Operating with unknown or unmitigated security vulnerabilities that could lead to data leakage.
+878.	Draft decision: Keep unchanged.
+879.	Proposed parameters for the Target Security Profile: The Head of SZI must conduct and document a formal risk assessment annually, or whenever major hardware/software changes occur.
+880.	Proposed enhancements: None.
+881.	Possible compensating control: None.
+882.	Rationale for the decision: The baseline explicitly dictates the annual parameter, which is standard practice for maintaining a Class 2 system processing confidential data.
+883.	Responsible role: Керівник СЗІ (Head of SZI).
+884.	Possible implementation evidence / verification artifact: Documented Risk Assessment Report.
+885.	Information to be clarified with the system owner: None.
+886.	Control identifier: RA-5(2)
+887.	Control name: Сканування вразливостей (оновлення)
+888.	Included in baseline profile: Yes.
+889.	Minimum baseline profile parameters: Update vulnerabilities within 24 hours prior to scanning.
+890.	Relevance to this ICS: High. Vulnerability definitions must be current to protect the Windows OS and FortiGate firewall.
+891.	Security requirements addressed: Ensuring scan definitions are up-to-date.
+892.	Risks mitigated: Failing to detect newly disclosed vulnerabilities (zero-days or N-days) during scheduled scans.
+893.	Draft decision: Clarification required.
+894.	Proposed parameters for the Target Security Profile: TBD.
+895.	Proposed enhancements: TBD.
+896.	Possible compensating control: TBD.
+897.	Rationale for the decision: As noted regarding the parent RA-5 control, the passport does not state whether active vulnerability scanning is currently performed or what tool is used, making it impossible to define the update parameters.
+898.	Responsible role: Системний адміністратор (System Administrator).
+899.	Possible implementation evidence / verification artifact: Scan tool configuration showing automated definition updates.
+900.	Information to be clarified with the system owner: What specific vulnerability scanning tool is used, and can it automatically update definitions within 24 hours of a scan?
+901.	Control identifier: RA-7
+902.	Control name: Реагування на ризики
+903.	Included in baseline profile: Yes.
+904.	Minimum baseline profile parameters: Respond to the results of security assessments, monitoring, and audits.
+905.	Relevance to this ICS: High. Identifying vulnerabilities or audit anomalies is useless if there is no formal requirement to mitigate them.
+906.	Security requirements addressed: Ensuring that identified risks are acted upon appropriately.
+907.	Risks mitigated: Operating the system with known, unmitigated vulnerabilities that could lead to the compromise of "confidential" data.
+908.	Draft decision: Keep unchanged.
+909.	Proposed parameters for the Target Security Profile: The Head of SZI must formally document the organizational response (mitigate, accept, transfer, or avoid) to any risks identified during the annual CA-2 assessments or regular AU-6 audit reviews.
+910.	Proposed enhancements: None.
+911.	Possible compensating control: None.
+912.	Rationale for the decision: Fits into the standard risk management lifecycle without needing structural changes.
+913.	Responsible role: Керівник СЗІ (Head of SZI).
+914.	Possible implementation evidence / verification artifact: Documented Risk Treatment Plan.
+915.	Information to be clarified with the system owner: None.
+916.	Control identifier: CA-2
+917.	Control name: Оцінювання
+918.	Included in baseline profile: Yes.
+919.	Minimum baseline profile parameters: d. щонайменше щороку (at least annually).
+920.	Relevance to this ICS: High. The system's protective measures (Loza-1, FortiGate, ESET) must be periodically validated.
+921.	Security requirements addressed: Assessing the security controls and the operational environment to determine if they are implemented correctly and operating as intended.
+922.	Risks mitigated: Degradation of the security posture over time due to configuration drift or unaddressed environmental changes in Room № 2.
+923.	Draft decision: Refine parameters.
+924.	Proposed parameters for the Target Security Profile: The SZI team must conduct a comprehensive assessment of all implemented security controls at least annually.
+925.	Proposed enhancements: Include a formal review of the physical perimeter integrity (walls, doors, alarm sensors) of Room № 2 as part of this annual assessment.
+926.	Possible compensating control: None.
+927.	Rationale for the decision: The baseline explicitly requires defining the frequency. Setting this to "annually" aligns with the baseline minimum and standard compliance cycles for Class 2 systems.
+928.	Responsible role: Керівник СЗІ / Провідний спеціаліст СЗІ (Head of SZI / Lead SZI Specialist).
+929.	Possible implementation evidence / verification artifact: Annual Security Assessment Report (Акт перевірки).
+930.	Information to be clarified with the system owner: None.
+931.	Control identifier: CA-5
+932.	Control name: План усунення недоліків та контрольні показники
+933.	Included in baseline profile: Yes.
+934.	Minimum baseline profile parameters: Develop a plan of action and milestones; document planned remediation measures; update based on assessment results.
+935.	Relevance to this ICS: High. Establishes a structured approach to fixing vulnerabilities found during the CA-2 assessments.
+936.	Security requirements addressed: Documenting and tracking the mitigation of identified weaknesses.
+937.	Risks mitigated: Losing track of required security fixes, resulting in prolonged exposure to known threats.
+938.	Draft decision: Refine parameters.
+939.	Proposed parameters for the Target Security Profile: Following any security assessment or audit, a formal "Plan of Action and Milestones" (POA&M) must be generated by the Lead SZI Specialist and approved by the Head of SZI, detailing responsible persons and deadlines for remediation.
+940.	Proposed enhancements: None.
+941.	Possible compensating control: None.
+942.	Rationale for the decision: Translates the baseline requirement into a specific, actionable administrative procedure utilizing the designated SZI personnel.
+943.	Responsible role: Провідний спеціаліст СЗІ (Lead SZI Specialist).
+944.	Possible implementation evidence / verification artifact: Approved remediation plans (POA&M documents).
+945.	Information to be clarified with the system owner: None.
+946.	Control identifier: CA-7
+947.	Control name: Безперервний моніторинг
+948.	Included in baseline profile: Yes.
+949.	Minimum baseline profile parameters: Develop and implement a continuous monitoring strategy.
+950.	Relevance to this ICS: High. The system connects to external networks (implied by "IT-Tour: Agency" software and FortiGate firewall).
+951.	Security requirements addressed: Maintaining ongoing awareness of information security, vulnerabilities, and threats to support organizational risk management decisions.
+952.	Risks mitigated: Relying solely on periodic (annual) assessments, which leaves the system blind to new threats emerging between assessment cycles.
+953.	Draft decision: Clarification required.
+954.	Proposed parameters for the Target Security Profile: TBD.
+955.	Proposed enhancements: TBD.
+956.	Possible compensating control: TBD.
+957.	Rationale for the decision: The passport states that ESET Endpoint Security and FortiGate 60F are used, which have monitoring capabilities. However, it is unclear if there is a formalized "continuous monitoring strategy" (e.g., a centralized SIEM or active SOC monitoring) as required by the baseline.
+958.	Responsible role: Системний адміністратор / Керівник СЗІ (System Administrator / Head of SZI).
+959.	Possible implementation evidence / verification artifact: Continuous Monitoring Strategy document.
+960.	Information to be clarified with the system owner: Does the organization utilize a centralized logging/monitoring server (like a SIEM), and is there a documented strategy for continuously monitoring the network perimeter and endpoints?
+961.	Control identifier: CA-3
+962.	Control name: Взаємодія систем
+963.	Included in baseline profile: Yes.
+964.	Minimum baseline profile parameters: Approve and manage exchange of information; document interface characteristics; review/update exchange agreements (frequency defined by organization).
+965.	Relevance to this ICS: High. The presence of the "IT-Tour: Agency" software implies connection to external travel operator databases or booking systems.
+966.	Security requirements addressed: Managing connections to external systems securely.
+967.	Risks mitigated: Data leakage or unauthorized access originating from a poorly secured or undocumented external connection.
+968.	Draft decision: Clarification required.
+969.	Proposed parameters for the Target Security Profile: TBD.
+970.	Proposed enhancements: TBD.
+971.	Possible compensating control: TBD.
+972.	Rationale for the decision: The passport does not detail exactly which external systems the ASVB interacts with, nor whether formal security connection agreements (Memorandums of Understanding, SLAs) exist with the "IT-Tour" service providers.
+973.	Responsible role: Начальник відділу безпеки (Head of Security).
+974.	Possible implementation evidence / verification artifact: Documented System Interconnection Agreements.
+975.	Information to be clarified with the system owner: What specific external systems does this ASVB connect to, and are there formalized security agreements governing the exchange of "confidential" data with these external entities?
+976.	Control identifier: SC-4
+977.	Control name: Інформація в загальних ресурсах системи
+978.	Included in baseline profile: Yes.
+979.	Minimum baseline profile parameters: Prevent unauthorized and unintended information transfer via shared system resources.
+980.	Relevance to this ICS: High. The system includes an HP ProLiant server and multiple workstations (Dell, Lenovo), implying the use of shared network folders or databases.
+981.	Security requirements addressed: Preventing users from accessing restricted files left in shared network locations.
+982.	Risks mitigated: A standard user accessing a shared folder intended only for the Head of Security or HR.
+983.	Draft decision: Refine parameters.
+984.	Proposed parameters for the Target Security Profile: Access to shared network resources (e.g., SMB shares on the HP Server) must be strictly governed by the "Loza-1" v.2.0 access control matrices, ensuring users can only access folders explicitly required for their role.
+985.	Proposed enhancements: None.
+986.	Possible compensating control: None.
+987.	Rationale for the decision: The baseline requirement is achieved by explicitly binding the shared resource protections to the certified "Loza-1" software already deployed in the infrastructure.
+988.	Responsible role: Системний адміністратор (System Administrator).
+989.	Possible implementation evidence / verification artifact: "Loza-1" configuration policies for network shares.
+990.	Information to be clarified with the system owner: None.
+991.	Control identifier: SC-10
+992.	Control name: Відключення мережі
+993.	Included in baseline profile: Yes.
+994.	Minimum baseline profile parameters: Terminate network connection at end of session or after max 15 minutes of inactivity.
+995.	Relevance to this ICS: High. Protects active sessions to the server or external portals.
+996.	Security requirements addressed: Terminating idle network communications.
+997.	Risks mitigated: Session hijacking of an unattended workstation connected to the "IT-Tour" database.
+998.	Draft decision: Refine parameters.
+999.	Proposed parameters for the Target Security Profile: The FortiGate 60F firewall and the "IT-Tour: Agency" software must be configured to forcefully terminate idle network sessions after exactly 15 minutes of inactivity.
+1000.	Proposed enhancements: None.
+1001.	Possible compensating control: None.
+1002.	Rationale for the decision: Applies the explicit 15-minute baseline maximum directly to the specific routing equipment (FortiGate) and primary application (IT-Tour) used in the system.
+1003.	Responsible role: Системний адміністратор (System Administrator).
+1004.	Possible implementation evidence / verification artifact: FortiOS session timeout configurations; application timeout settings.
+1005.	Information to be clarified with the system owner: None.
+1006.	Control identifier: SC-12, SC-13
+1007.	Control name: Встановлення та управління криптографічними ключами; Криптографічний захист
+1008.	Included in baseline profile: Yes.
+1009.	Minimum baseline profile parameters: Define key management actions; implement specific types of cryptography to protect confidentiality.
+1010.	Relevance to this ICS: High. The system processes "confidential" information and connects over networks.
+1011.	Security requirements addressed: Establishing a secure cryptographic foundation for data at rest and data in transit.
+1012.	Risks mitigated: Eavesdropping on network traffic; unauthorized decryption of stored data.
+1013.	Draft decision: Clarification required.
+1014.	Proposed parameters for the Target Security Profile: TBD.
+1015.	Proposed enhancements: TBD.
+1016.	Possible compensating control: TBD.
+1017.	Rationale for the decision: The passport lacks any mention of cryptographic subsystems (e.g., PKI, specific encryption algorithms used by FortiGate for VPNs, or encryption used by Loza-1/Windows BitLocker). Ukrainian regulations often require state-certified cryptography for specific data types.
+1018.	Responsible role: Системний адміністратор (System Administrator).
+1019.	Possible implementation evidence / verification artifact: Cryptographic provider configurations and key management logs.
+1020.	Information to be clarified with the system owner: What specific cryptographic libraries/providers are used (e.g., standard AES, or specialized Ukrainian cryptographic tools like "Crocus" or "Cipher"), and how are keys managed?
+1021.	Control identifier: SC-18
+1022.	Control name: Мобільний код
+1023.	Included in baseline profile: Yes.
+1024.	Minimum baseline profile parameters: Define acceptable mobile code technologies; authorize and monitor their use.
+1025.	Relevance to this ICS: High. Users will likely use web browsers (JavaScript) and Office 2021 (VBA macros) on the Dell and Lenovo workstations.
+1026.	Security requirements addressed: Controlling the execution of scripts and active content downloaded from external sources.
+1027.	Risks mitigated: Drive-by downloads, malicious Office macros, and browser-based exploitation.
+1028.	Draft decision: Refine parameters.
+1029.	Proposed parameters for the Target Security Profile: Unsigned VBA macros in Microsoft Office 2021 must be strictly disabled via Group Policy. Web browsers must be configured to block potentially dangerous mobile code (e.g., outdated plugins), monitored by ESET Endpoint Security v.10.0.
+1030.	Proposed enhancements: None.
+1031.	Possible compensating control: None.
+1032.	Rationale for the decision: Connects the baseline requirement for mobile code management directly to the specific Office software suite and endpoint protection deployed in the ASVB.
+1033.	Responsible role: Системний адміністратор (System Administrator).
+1034.	Possible implementation evidence / verification artifact: Windows GPO settings for Microsoft Office macro security.
+1035.	Information to be clarified with the system owner: None.
+1036.	Control identifier: SC-15
+1037.	Control name: Спільні обчислювальні пристрої та застосунки
+1038.	Included in baseline profile: Yes.
+1039.	Minimum baseline profile parameters: Prohibit remote activation of shared devices with defined exceptions; provide clear guidance.
+1040.	Relevance to this ICS: High. The system includes shared endpoints (Dell desktop, Lenovo laptop) that could be vulnerable to unauthorized remote activation of hardware components.
+1041.	Security requirements addressed: Controlling the remote activation of shared computing resources (e.g., microphones, cameras).
+1042.	Risks mitigated: Covert eavesdropping or unauthorized resource usage within the physically secure Room № 2.
+1043.	Draft decision: Refine parameters.
+1044.	Proposed parameters for the Target Security Profile: Remote activation of peripheral hardware (microphones, webcams) on the Dell OptiPlex and Lenovo ThinkPad must be strictly disabled at the OS level unless explicitly required and authorized by the SZI.
+1045.	Proposed enhancements: None.
+1046.	Possible compensating control: None.
+1047.	Rationale for the decision: Disabling remote activation protects the confidentiality of Room 2, where restricted discussions and processing of "confidential" documents occur.
+1048.	Responsible role: Системний адміністратор (System Administrator).
+1049.	Possible implementation evidence / verification artifact: Windows Device Manager configurations and GPO settings.
+1050.	Information to be clarified with the system owner: None.
+1051.	Control identifier: SC-23
+1052.	Control name: Автентифікація сесії
+1053.	Included in baseline profile: Yes.
+1054.	Minimum baseline profile parameters: Protect the authentication of communication sessions.
+1055.	Relevance to this ICS: High. Protects active sessions for the "IT-Tour: Agency" software and firewall administration.
+1056.	Security requirements addressed: Ensuring session IDs or authentication tokens cannot be intercepted or hijacked.
+1057.	Risks mitigated: Session hijacking leading to unauthorized access to the travel agency database or firewall configurations.
+1058.	Draft decision: Keep unchanged.
+1059.	Proposed parameters for the Target Security Profile: Implement secure, encrypted protocols (e.g., TLS) for all client-server communications involving the IT-Tour software and FortiGate administrative interfaces.
+1060.	Proposed enhancements: None.
+1061.	Possible compensating control: None.
+1062.	Rationale for the decision: The baseline requirement directly applies to protecting the integrity of active logical sessions within the ASVB.
+1063.	Responsible role: Системний адміністратор (System Administrator).
+1064.	Possible implementation evidence / verification artifact: Network traffic analysis demonstrating encrypted session tokens.
+1065.	Information to be clarified with the system owner: None.
+1066.	Control identifier: SI-2
+1067.	Control name: Виправлення дефектів
+1068.	Included in baseline profile: Yes.
+1069.	Minimum baseline profile parameters: Install security updates within 30 days of release.
+1070.	Relevance to this ICS: High. The system uses Windows 10 Pro, Office 2021, FortiGate, and ESET, all of which require regular vulnerability patching.
+1071.	Security requirements addressed: Timely remediation of software flaws and vulnerabilities.
+1072.	Risks mitigated: Exploitation of known software vulnerabilities (N-days) by malicious actors.
+1073.	Draft decision: Refine parameters.
+1074.	Proposed parameters for the Target Security Profile: The System Administrator must install critical security updates for Windows OS, Office 2021, and FortiGate firmware strictly within 30 days of official vendor release.
+1075.	Proposed enhancements: None.
+1076.	Possible compensating control: None.
+1077.	Rationale for the decision: Customizes the baseline's 30-day mandate directly to the specific software and hardware inventory listed in the system passport.
+1078.	Responsible role: Системний адміністратор (System Administrator).
+1079.	Possible implementation evidence / verification artifact: Windows Server Update Services (WSUS) logs or manual update installation acts.
+1080.	Information to be clarified with the system owner: None.
+1081.	Control identifier: SI-4, SI-4(4)
+1082.	Control name: Моніторинг системи
+1083.	Included in baseline profile: Yes.
+1084.	Minimum baseline profile parameters: Continuous monitoring for attacks, unauthorized connections, and unusual traffic.
+1085.	Relevance to this ICS: High. Continuous network and endpoint monitoring is essential for detecting ongoing threats against confidential data.
+1086.	Security requirements addressed: Detecting unauthorized system use and anomalous network behavior.
+1087.	Risks mitigated: Silent network intrusions or malware operating undetected over long periods.
+1088.	Draft decision: Refine parameters.
+1089.	Proposed parameters for the Target Security Profile: Implement continuous monitoring by leveraging the active intrusion prevention (IPS) features of the FortiGate 60F and the real-time protection module of ESET Endpoint Security v.10.0.
+1090.	Proposed enhancements: None.
+1091.	Possible compensating control: None.
+1092.	Rationale for the decision: Binds the theoretical "continuous monitoring" requirement to the actual capabilities of the specific hardware and software already installed by UA-Travel.
+1093.	Responsible role: Системний адміністратор (System Administrator).
+1094.	Possible implementation evidence / verification artifact: ESET and FortiGate active monitoring configurations and dashboard logs.
+1095.	Information to be clarified with the system owner: None.
+1096.	Control identifier: SI-5
+1097.	Control name: Попередження, рекомендації та директиви з безпеки
+1098.	Included in baseline profile: Yes.
+1099.	Minimum baseline profile parameters: Receive external alerts and directives; implement directives within established timeframes.
+1100.	Relevance to this ICS: High. Staying updated on external threat intelligence is vital for maintaining the security of the Windows and Fortinet infrastructure
+1101.	Security requirements addressed: Subscribing to and acting upon external security advisories.
+1102.	Risks mitigated: Remaining unaware of critical industry-wide threats or zero-day vulnerabilities affecting installed systems.
+1103.	Draft decision: Refine parameters.
+1104.	Proposed parameters for the Target Security Profile: The Head of SZI must subscribe to official CERT-UA alerts and vendor security advisories (Microsoft, Fortinet, ESET). Critical directives must be evaluated and implemented within 72 hours.
+1105.	Proposed enhancements: None.
+1106.	Possible compensating control: None.
+1107.	Rationale for the decision: The baseline requires receiving alerts. Specifying the relevant Ukrainian authority (CERT-UA) and specific vendors makes the control actionable.
+1108.	Responsible role: Керівник СЗІ (Head of SZI).
+1109.	Possible implementation evidence / verification artifact: Subscription confirmations and logs of directive implementation.
+1110.	Information to be clarified with the system owner: None.
+1111.	Control identifier: SI-12
+1112.	Control name: Управління та збереження інформації
+1113.	Included in baseline profile: Yes.
+1114.	Minimum baseline profile parameters: Manage, retain, and output official information according to laws, directives, and policies.
+1115.	Relevance to this ICS: High. The system processes official documents labeled "Confidential" and "For official use".
+1116.	Security requirements addressed: Compliance with legal and organizational data retention and lifecycle policies.
+1117.	Risks mitigated: Illegal premature destruction of records or unauthorized prolonged retention of confidential data.
+1118.	Draft decision: Clarification required.
+1119.	Proposed parameters for the Target Security Profile: TBD.
+1120.	Proposed enhancements: TBD.
+1121.	Possible compensating control: TBD.
+1122.	Rationale for the decision: The passport notes the data is restricted, but the exact legal or organizational retention periods (e.g., how many years IT-Tour agency data must be kept) are not specified in the provided documents.
+1123.	Responsible role: Начальник відділу безпеки (Head of Security).
+1124.	Possible implementation evidence / verification artifact: Documented Information Retention Policy.
+1125.	Information to be clarified with the system owner: What are the exact organizational or legal retention periods for the specific types of "confidential" data processed by UA-Travel?
+1126.	Control identifier: AC-1, AT-1, AU-1, CA-1, CM-1, IA-1, IR-1, MA-1, MP-1, PE-1, PL-1, PS-1, RA-1, SA-1, SC-1, SI-1, SR-1
+1127.	Control name: Політика та процедури планування безпеки
+1128.	Included in baseline profile: Yes.
+1129.	Minimum baseline profile parameters: Develop, document, distribute policies/procedures; review at least annually.
+1130.	Relevance to this ICS: High. Forms the administrative foundation of the entire ASVB security posture.
+1131.	Security requirements addressed: Establishing and maintaining the organizational rules and procedures for every security domain.
+1132.	Risks mitigated: Inconsistent application of security controls due to lack of formalized, up-to-date documentation.
+1133.	Draft decision: Refine parameters.
+1134.	Proposed parameters for the Target Security Profile: The existing "Положення про СЗІ" (Regulation on SZI) and all associated procedural documents must be formally reviewed and updated by the Head of SZI at least annually, and distributed to all relevant personnel.
+1135.	Proposed enhancements: None.
+1136.	Possible compensating control: None.
+1137.	Rationale for the decision: The system already possesses foundational documentation (SZI Regulation dated 10.01.2023). The Target Profile must enforce the annual review parameter mandated by the baseline.
+1138.	Responsible role: Керівник СЗІ (Head of SZI).
+1139.	Possible implementation evidence / verification artifact: Updated and signed SZI Regulations with annual review timestamps.
+1140.	Information to be clarified with the system owner: None.
+1141.	Control identifier: PL-2
+1142.	Control name: Плани захисту інформації
+1143.	Included in baseline profile: Yes.
+1144.	Minimum baseline profile parameters: Develop a plan describing components, environment, threats, roles; review annually; protect from disclosure.
+1145.	Relevance to this ICS: High. A comprehensive plan is legally and technically required for a Class 2 system.
+1146.	Security requirements addressed: Formalizing the system architecture, threat model, and protective measures into a central document.
+1147.	Risks mitigated: Operating a complex system without a cohesive understanding of its boundaries, threats, and defenses.
+1148.	Draft decision: Keep unchanged.
+1149.	Proposed parameters for the Target Security Profile: The "Passport-Formulary" itself serves as the core of this plan. It must be reviewed annually by the SZI and protected as a confidential document.
+1150.	Proposed enhancements: None.
+1151.	Possible compensating control: None.
+1152.	Rationale for the decision: The provided Passport-Formulary already contains the components, environment details, and responsible roles demanded by the baseline.
+1153.	Responsible role: Керівник СЗІ (Head of SZI).
+1154.	Possible implementation evidence / verification artifact: The approved and annually updated System Passport.
+1155.	Information to be clarified with the system owner: None.
+1156.	Control identifier: PL-4
+1157.	Control name: Правила поведінки
+1158.	Included in baseline profile: Yes.
+1159.	Minimum baseline profile parameters: Establish rules; users must read, understand, and sign before access; review annually.
+1160.	Relevance to this ICS: High. Users must explicitly agree to the strict rules governing "confidential" data handling.
+1161.	Security requirements addressed: Enforcing accountability through signed agreements.
+1162.	Risks mitigated: Users claiming ignorance of security policies after causing a data breach.
+1163.	Draft decision: Refine parameters.
+1164.	Proposed parameters for the Target Security Profile: The Head of Security must maintain a "Rules of Behavior" document. Every user must physically sign an acknowledgment of these rules before the System Administrator creates their account in "Loza-1" and Windows.
+1165.	Proposed enhancements: None.
+1166.	Possible compensating control: None.
+1167.	Rationale for the decision: Connecting the administrative signature requirement directly to the technical account provisioning workflow ensures strict compliance with the baseline.
+1168.	Responsible role: Начальник відділу безпеки / Системний адміністратор (Head of Security / System Administrator).
+1169.	Possible implementation evidence / verification artifact: Signed "Rules of Behavior" acknowledgments in employee files.
+1170.	Information to be clarified with the system owner: None.
+1171.	Control identifier: SA-3
+1172.	Control name: Життєвий цикл розробки системи
+1173.	Included in baseline profile: Yes.
+1174.	Minimum baseline profile parameters: Manage the system using an SDLC that incorporates information security considerations.
+1175.	Relevance to this ICS: High. Any future upgrades, scaling, or modifications to the ASVB must be managed securely to protect the "confidential" restriction label.
+1176.	Security requirements addressed: Integrating information security into the system development life cycle.
+1177.	Risks mitigated: Introducing new hardware or software that breaks existing security boundaries or lacks necessary security features.
+1178.	Draft decision: Keep unchanged.
+1179.	Proposed parameters for the Target Security Profile: All system modifications or expansions must follow a formalized life cycle where the Head of SZI reviews and approves the security architecture prior to implementation.
+1180.	Proposed enhancements: None.
+1181.	Possible compensating control: None.
+1182.	Rationale for the decision: Fits seamlessly into the existing SZI responsibilities outlined in the passport, ensuring security is evaluated before operational changes occur.
+1183.	Responsible role: Керівник СЗІ (Head of SZI).
+1184.	Possible implementation evidence / verification artifact: Signed project approval acts and updated System Passport.
+1185.	Information to be clarified with the system owner: None.
+1186.	Control identifier: SA-4, SA-4(1), SA-4(2)
+1187.	Control name: Процес придбання
+1188.	Included in baseline profile: Yes.
+1189.	Minimum baseline profile parameters: Include security requirements in system acquisition contracts; describe functional properties of security controls.
+1190.	Relevance to this ICS: High. When purchasing new workstations, servers, or software licenses (e.g., ESET, Windows), security criteria must be enforced.
+1191.	Security requirements addressed: Ensuring that acquired IT products and services meet the organization's security baseline.
+1192.	Risks mitigated: Purchasing consumer-grade or unsupported hardware/software that cannot integrate with "Loza-1" or lacks necessary enterprise security features.
+1193.	Draft decision: Refine parameters.
+1194.	Proposed parameters for the Target Security Profile: The Lead SZI Specialist must explicitly define security requirements (e.g., TPM 2.0 support, compatibility with ESET/Loza-1) in all procurement requests for ASVB hardware and software.
+1195.	Proposed enhancements: None.
+1196.	Possible compensating control: None.
+1197.	Rationale for the decision: Operationalizes the baseline requirement by inserting the SZI personnel directly into the IT procurement workflow for Room № 2 equipment.
+1198.	Responsible role: Провідний спеціаліст СЗІ (Lead SZI Specialist).
+1199.	Possible implementation evidence / verification artifact: Procurement technical specifications and SZI approval signatures.
+1200.	Information to be clarified with the system owner: None.
+1201.	Control identifier: SA-5
+1202.	Control name: Документація на інформаційну систему
+1203.	Included in baseline profile: Yes.
+1204.	Minimum baseline profile parameters: Obtain documentation from vendors (admin and user guides); protect documentation from unauthorized disclosure.
+1205.	Relevance to this ICS: High. The system relies on specialized enterprise tools (FortiGate 60F, "Loza-1" v.2.0, Cisco Catalyst) that require official vendor documentation for secure configuration.
+1206.	Security requirements addressed: Acquiring, maintaining, and securing technical documentation for the system components.
+1207.	Risks mitigated: Misconfiguration of complex network and security appliances due to a lack of authoritative vendor guidance.
+1208.	Draft decision: Keep unchanged.
+1209.	Proposed parameters for the Target Security Profile: All vendor documentation (manuals, configuration guides) for the hardware and software listed in the passport must be stored securely in Room № 2. Access to this documentation must be restricted to the System Administrator and SZI personnel.
+1210.	Proposed enhancements: None.
+1211.	Possible compensating control: None.
+1212.	Rationale for the decision: Applies the baseline requirement directly to the established physical security boundary and specific administrative roles.
+1213.	Responsible role: Системний адміністратор (System Administrator).
+1214.	Possible implementation evidence / verification artifact: Library of technical documentation stored in Room № 2 safes.
+1215.	Information to be clarified with the system owner: None.
+1216.	Control identifier: SA-9
+1217.	Control name: Зовнішні послуги інформаційних систем
+1218.	Included in baseline profile: Yes.
+1219.	Minimum baseline profile parameters: Require external providers to comply with organizational security requirements; define oversight mechanisms.
+1220.	Relevance to this ICS: High. The system heavily utilizes "IT-Tour: Agency" software, which likely connects to an external cloud database or B2B booking service.
+1221.	Security requirements addressed: Managing the security of external information system services.
+1222.	Risks mitigated: Data breaches originating from the external IT-Tour service provider, which processes the travel agency's confidential client data.
+1223.	Draft decision: Clarification required.
+1224.	Proposed parameters for the Target Security Profile: TBD.
+1225.	Proposed enhancements: TBD.
+1226.	Possible compensating control: TBD.
+1227.	Rationale for the decision: The passport lists the "IT-Tour" software but does not explain the architecture of this service. It is unknown if "IT-Tour" is entirely locally hosted on the HP Server or if it acts as a client to an external cloud service. If external, strict SLAs and security compliance documentation from the vendor are legally required.
+1228.	Responsible role: Начальник відділу безпеки (Head of Security).
+1229.	Possible implementation evidence / verification artifact: Vendor Security Agreements and SLAs.
+1230.	Information to be clarified with the system owner: Is "IT-Tour: Agency" a purely local application, or does it utilize external/cloud-hosted database services? If external, what security guarantees or contracts are in place with the provider?
+1231.	Control identifier: SR-2
+1232.	Control name: План управління ризиками ланцюга постачання
+1233.	Included in baseline profile: Yes.
+1234.	Minimum baseline profile parameters: Review and update the plan at least annually; protect from unauthorized disclosure.
+1235.	Relevance to this ICS: High. Protecting the supply chain ensures that the Dell, Lenovo, HP, and Fortinet equipment is genuine and free of hardware implants or compromised firmware.
+1236.	Security requirements addressed: Developing a formal Supply Chain Risk Management (SCRM) plan.
+1237.	Risks mitigated: Introduction of counterfeit hardware, compromised firmware, or malicious logic into the system during the acquisition phase.
+1238.	Draft decision: Clarification required.
+1239.	Proposed parameters for the Target Security Profile: TBD.
+1240.	Proposed enhancements: TBD.
+1241.	Possible compensating control: TBD.
+1242.	Rationale for the decision: The baseline explicitly requires the development of an SCRM plan. The provided passport and SZI regulations do not indicate whether such a plan currently exists within the organization.
+1243.	Responsible role: Начальник відділу безпеки (Head of Security).
+1244.	Possible implementation evidence / verification artifact: Approved SCRM Plan document.
+1245.	Information to be clarified with the system owner: Does the organization possess a formalized Supply Chain Risk Management (SCRM) plan covering the procurement of IT equipment?
+1246.	Control identifier: SR-3, SR-5
+1247.	Control name: Контроль ланцюга постачання і процесів; Стратегії придбання, інструменти і методи
+1248.	Included in baseline profile: Yes.
+1249.	Minimum baseline profile parameters: Establish processes to identify and address weaknesses in supply chain elements; implement acquisition strategies to protect against supply chain risks.
+1250.	Relevance to this ICS: High. Vital for ensuring the integrity of the critical network and endpoint security infrastructure.
+1251.	Security requirements addressed: Implementing practical controls and strategies to mitigate supply chain threats.
+1252.	Risks mitigated: Purchasing grey-market or compromised IT equipment from unverified third-party sellers.
+1253.	Draft decision: Refine parameters.
+1254.	Proposed parameters for the Target Security Profile: All IT hardware (servers, workstations, firewalls) and software licenses must be procured strictly from official vendors or their authorized, certified distributors in Ukraine. Verification of hardware serial numbers and software digital signatures must be performed by the System Administrator upon delivery.
+1255.	Proposed enhancements: None.
+1256.	Possible compensating control: None.
+1257.	Rationale for the decision: Specifying that purchases must be made through official distributors provides a concrete, enforceable acquisition strategy that satisfies the broad baseline requirement.
+1258.	Responsible role: Керівник СЗІ / Системний адміністратор (Head of SZI / System Administrator).
+1259.	Possible implementation evidence / verification artifact: Procurement records demonstrating purchases from authorized distributors; hardware verification logs.
+1260.	Information to be clarified with the system owner: None.
+
+A. Controls that can remain unchanged
+These controls are naturally satisfied by the organization’s existing physical infrastructure, specialized security software ("Loza-1" v.2.0), operating system defaults, and established administrative workflows. They require no structural modification or additional parameterization.
+•	Access Control: AC-3, AC-5 (Logical access enforcement and segregation of duties via "Loza-1" and organizational orders).
+•	Audit and Accountability: AU-3, AU-6, AU-7, AU-9 (Weekly log reviews, standard OS/firewall logging content, and protection of logs via "Loza-1").
+•	Configuration Management: CM-4, CM-5, CM-8, CM-12 (Impact analysis, strict physical/logical change restrictions, and the Passport-Formulary acting as a robust inventory and location registry).
+•	Identification and Authentication: IA-2, IA-5, IA-6, IA-11 (Unique accounts, obscured passwords, and strict password complexity policies natively supported by Windows/Loza-1).
+•	Incident Response & Maintenance: IR-3, MA-4, MA-5 (Annual IR testing; strict internal-only or escorted technical maintenance).
+•	Media Protection: MP-3, MP-5 (Mandatory marking and tracking of media during transport).
+•	Physical and Environmental Protection: PE-4, PE-6, PS-4, PS-5 (90-day physical log reviews by VAT "SERZHANT", physical power protection, and strict baseline timelines for personnel termination/transfer).
+•	Risk Assessment & Security Assessment: RA-3, RA-7, SR-6, CA-4 (Annual risk assessments and formal risk response procedures by the SZI).
+•	System and Communications Protection: SC-23, SA-3, SA-5, PL-2 (Encrypted session authentication, standard SDLC security reviews, secure storage of vendor documentation, and utilizing the Passport-Formulary as the core system security plan).
+B. Controls that require parameter refinement or enhancement
+These controls require the organization to enforce specific operational values (e.g., timeframes, limits) or implement technical enhancements tailored to protect data with the "Confidential" / "For official use" restriction label.
+•	Access Control: AC-2, AC-4, AC-6, AC-7, AC-11 (Define termination deactivation times; restrict FortiGate routing; enforce minimum privileges; set max 5 failed logins; reduce auto-lock timeout to 15 minutes).
+•	Awareness and Training: AT-2, AT-3, PL-4 (Mandate annual role-based training covering specific hardware/software; require signed "Rules of Behavior" before account creation).
+•	Audit and Accountability: AU-5, AU-8 (Implement near real-time audit failure alerts for SZI/Admins; mandate internal NTP time synchronization across all hardware).
+•	Configuration Management: CM-2, CM-3, CM-6, CM-7, CM-7(5) (Formalize annual baseline reviews and 1-year change record retention; implement strict "deny all" application whitelisting for authorized software).
+•	Identification and Authentication: IA-3, IA-4, IA-2(1), IA-2(2) (Implement MAC filtering/802.1X on the Cisco switch; ban username reuse for 1 year; implement hardware MFA tokens for privileged accounts).
+•	Incident Response & Maintenance: IR-2, IR-5, IR-6, MA-3 (Mandate 30-day initial/annual training for SZI; enforce a 2-hour incident documentation limit; require ESET AV scans for all diagnostic tools).
+•	Media Protection: MP-2, MP-4, MP-6, MP-7 (Secure storage in Room 2 safes; enforce specific physical/cryptographic destruction of media; technically block unowned USBs via "Loza-1").
+•	Personnel & Physical Security: PS-3, PE-2, PE-3, PE-5 (Head of Security must conduct background checks prior to access and manage the physical access/visitor lists for Room 2 and output devices).
+•	Security Assessment & Planning: CA-2, CA-5, AC-1 Family (Mandate annual security assessments including physical perimeter checks; formalize POA&M creation post-assessment; enforce annual review of SZI Regulations).
+•	System and Communications Protection: SC-4, SC-7, SC-10, SC-15, SC-18 (Use "Loza-1" for shared folder access; enforce "default deny" on FortiGate; set strict 15-minute network disconnects; disable remote hardware activation; block unsigned macros/scripts).
+•	System Integrity & Supply Chain: SI-2, SI-3, SI-4, SI-5, SA-4, SR-3, SR-5 (Apply 30-day patching SLAs; enforce real-time ESET/FortiGate IPS monitoring; implement CERT-UA directives within 72 hours; enforce strict procurement of IT goods only from authorized Ukrainian distributors).
+C. Controls for which the available information is insufficient and additional input from the system owner is required
+The provided system documentation lacks the necessary details to formulate a draft decision. Clarification from the system owner is mandatory to finalize these elements of the Target Profile.
+•	Access & Audit Policies: AC-12, AU-2, AU-11, AU-12 (What specific conditions trigger forced session termination? What is the exact list of audited events? What is the organizational retention period for audit logs?).
+•	Remote & Wireless Access: AC-17, AC-18, AC-19, CM-2(7), PE-17 (Is the Lenovo laptop authorized for telework, travel, or wireless access outside Room 2, and what are the associated sanitization procedures?).
+•	Incident Response & Backup: CP-9, IR-4, IR-7, IR-8 (What is the backup frequency, media, and encryption method? Does a formalized, standalone Incident Response Plan exist, and which exact authorities must be notified during a breach?).
+•	Vulnerability & Continuous Monitoring: RA-5, RA-5(2), CA-7 (Is an active vulnerability scanner deployed? Does the organization utilize a centralized continuous monitoring strategy/SIEM beyond standard endpoint AV?).
+•	Cryptography: SC-8, SC-12, SC-13, SC-28 (Are the endpoints utilizing full-disk encryption for data at rest? What specific cryptographic providers/libraries are used to protect data in transit?).
+•	External Connections & Supply Chain: CA-3, SA-9, SR-2 (Does the "IT-Tour: Agency" software connect to external cloud services, and are there SLAs governing this? Does a formal Supply Chain Risk Management plan exist?).
+•	Information Lifecycle: SI-12 (What are the exact legal/organizational retention and archival periods for the "confidential" travel agency data?).
